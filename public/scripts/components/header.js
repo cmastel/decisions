@@ -8,7 +8,7 @@ $(() => {
     $pageHeader.find("#page-header__user-links").remove();
     let userLinks;
 
-    if (true) {
+    if (!user) {
       userLinks = `
       <nav id="page-header__user-links" class="page-header__user-links">
         <ul>
@@ -24,11 +24,8 @@ $(() => {
       <nav id="page-header__user-links" class="page-header__user-links">
         <ul>
           <li class="home">🏠</li>
-          <li class="search_button">Search</li>
-          <li>${user.name}</li>
-          <li class="create_listing_button">Create Listing</li>
-          <li class="my_listing_button">My Listings</li>
-          <li class="my_reservations_button">My Reservations</li>
+          <li>${user.first_name}</li>
+          <li class="my_polls_button">My Listings</li>
           <li class="logout_button">Log Out</li>
         </ul>
       </nav>
@@ -40,7 +37,13 @@ $(() => {
 
   window.header.update = updateHeader;
 
-  updateHeader();
+  getMyDetails()
+    .then(function( json ) {
+      console.log('header json', json)
+      updateHeader(json.user);
+    })
+
+  // updateHeader();
 
   $("header").on('click', '.sign-up_button', () => {
     views_manager.show('signUp');
