@@ -10,6 +10,7 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
+const cuid       = require("cuid");
 
 // PG database client/connection setup
 const { Pool } = require('pg');
