@@ -71,6 +71,15 @@ module.exports = (db) => {
       database.addNewQuestions(db, newPoll, pollData)
       .then(questionData => {
         database.addNewResponses(db, newPoll, questionData)
+        .then(() => {
+          console.log('polldata', pollData)
+          res.send(pollData)
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message })
+        })
       })
     })
 

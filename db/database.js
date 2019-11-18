@@ -80,9 +80,10 @@ const addNewResponses = function (db, newQuestions, questionsData) {
     VALUES ($1, $2),
     ($1, $3),
     ($1, $4),
-    ($1, $5);
+    ($1, $5)
+    RETURNING *;
   `, values)
-  .then(res => res.rows[0])
+  .then(res => res.rows)
   .catch(err => console.log(err));
 }
 
