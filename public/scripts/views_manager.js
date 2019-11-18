@@ -8,12 +8,9 @@ $(() => {
     $logInForm.detach();
     $signUpForm.detach();
     $myPolls.detach();
-<<<<<<< HEAD
     $mainPage.detach();
 
-=======
     $newPoll.detach();
->>>>>>> feature/newPoll
 
 
     switch (item) {
