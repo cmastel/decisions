@@ -12,7 +12,9 @@ $(() => {
       userLinks = `
       <nav class="nav" id="page-header__user-links">
         <div class="nav-title">
+          <a href="/">
             <img class="nav-title-logo" src="./static/images/Logo.png" />
+          </a>
         </div>
         <div class="nav-body">
             <ul class="nav-body-list">
@@ -35,7 +37,9 @@ $(() => {
       userLinks = `
       <nav class="nav" id="page-header__user-links">
       <div class="nav-title">
-          <img class="nav-title-logo"  src="./static/images/Logo.png"/>
+        <a href="/">
+          <img class="nav-title-logo" src="./static/images/Logo.png" />
+        </a>
       </div>
       <div class="nav-body">
           <ul class="nav-body-list">
@@ -60,7 +64,6 @@ $(() => {
 
   getMyDetails()
     .then(function( json ) {
-      console.log('header json', json)
       updateHeader(json.user);
     })
 
@@ -76,7 +79,6 @@ $(() => {
 
   $("header").on('click', '#logout', () => {
     logOut().then(() => {
-      // header.update(null);
       views_manager.show('mainPage');
       updateHeader(null);
     });

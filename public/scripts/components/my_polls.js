@@ -36,7 +36,7 @@ $(() => {
 
   window.myPolls = {};
 
-  $('#create_new_poll').on('click', (event) => {
+  $myPolls.on('click', '#create_new_poll', (event) => {
     event.preventDefault();
     views_manager.show('newPoll');
   });

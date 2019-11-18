@@ -33,8 +33,9 @@ module.exports = (db) => {
 
   router.get("/me", (req, res) => {
     const userID = req.session.userID;
+    console.log(req.session.userID)
     if (!userID) {
-      res.send({ message: "not logged in" });
+      res.send(null);
       return;
     }
 
