@@ -70,4 +70,11 @@ $(() => {
     views_manager.show('signUp');
   });
 
+  $("header").on('click', '#logout', () => {
+    logOut().then(() => {
+      // header.update(null);
+      updateHeader(null);
+    });
+  });
+
 });

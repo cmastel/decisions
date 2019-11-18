@@ -6,6 +6,7 @@ $(() => {
 
   window.views_manager.show = function(item) {
     // $newPropertyForm.detach();
+    $signUpForm.detach();
 
 
     switch (item) {
