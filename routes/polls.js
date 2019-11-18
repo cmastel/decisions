@@ -17,7 +17,7 @@ app.use(cookieSession({
 }));
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get("/polls", (req, res) => {
     let query = `SELECT * FROM polls`;
     console.log(query);
     db.query(query)
@@ -32,7 +32,7 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/", (req, res) => {
+  router.get("/questions", (req, res) => {
     let query = `SELECT * FROM questions`;
     console.log(query);
     db.query(query)
@@ -47,7 +47,7 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/", (req, res) => {
+  router.get("/responses", (req, res) => {
     db.query(`SELECT * FROM responses;`)
       .then(data => {
         const responses = data.rows;
