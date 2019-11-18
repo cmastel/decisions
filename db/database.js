@@ -30,14 +30,36 @@ const getUserById = function (db, userId) {
   .catch(err => console.log(err));
 }
 
-const addNewPoll = function (db, newPoll) {
-  console.log('newPoll to db', newPoll);
-
+const addNewPoll = function (db, newPoll, userID) {
+  console.log('userID', userID);
+  if (!userID) {
+    res.send({ message: "not logged in" });
+    return;
+  };
+  const created = new Date;
+  const createdDate = created.getFullYear() + '-' + (created.getMonth() + 1) + '-' + created.getDate();
+  const values = [
+    newPoll.poll_title,
+    // newPoll.poll_question,
+    // newPoll.response_1,
+    // newPoll.response_2,
+    // newPoll.response_3,
+    // newPoll.response_4,
+    newPoll.userID,
+    createdDate
+  ]
+  console.log('values', values);
   return db.query(`
-
-  `)
+    INSERT INTO polls (title, user_id, created_on)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `, values)
   .then(res => res.rows[0])
   .catch(err => console.log(err));
 }
+const addNewQuestions = function (db, newQuestions, pollID) {
+  console.log('pollID', pollID);
 
-module.exports = { addUser, getUserByEmail, getUserById, addNewPoll };
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions };

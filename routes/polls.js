@@ -6,8 +6,15 @@
  */
 
 const express = require('express');
+const app     = express();
 const router  = express.Router();
 const database = require('../db/database.js')
+const cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -27,7 +34,12 @@ module.exports = (db) => {
 
   router.post('/new_poll', (req, res) => {
     const newPoll = req.body;
-    database.addNewPoll(db, newPoll);
+    const userID = req.session.userID;
+    database.addNewPoll(db, newPoll, userID)
+    .then(data => {
+      console.log('return from polls insert', data)
+    })
+
   });
 
 
