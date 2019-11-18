@@ -34,11 +34,12 @@ $topbar-responsive-animation-type: fade-in; // or use slide-down or none
     }
   }
   &-buttons {
-    flex: 1;
+    flex: 0;
     justify-content: center;
     display: flex;
     align-items: center;
     &-style {
+      min-width: 110px;
       margin: 0 16px;
       height: 38px;
       outline: none;
