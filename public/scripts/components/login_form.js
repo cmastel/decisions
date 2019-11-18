@@ -26,8 +26,12 @@ $(() => {
     const data = $(this).serialize();
     logIn(data)
       .then(json => {
-         header.update(json[0]);
-         views_manager.show('myPolls');
+        if(!json) {
+          header.update(json[0]);
+          views_manager.show('myPolls');
+        } else {
+          views_manager.show('signUp');
+        }
       })
       .catch(e => console.log(e));
   });
