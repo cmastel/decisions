@@ -27,6 +27,7 @@ $(() => {
     logIn(data)
       .then(json => {
          header.update(json[0]);
+         views_manager.show('myPolls');
       })
       .catch(e => console.log(e));
   });

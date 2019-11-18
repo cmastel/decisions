@@ -7,12 +7,14 @@ $(() => {
   window.views_manager.show = function(item) {
     $logInForm.detach();
     $signUpForm.detach();
-    // $newPropertyForm.detach();
-    $signUpForm.detach();
+    $myPolls.detach();
 
 
     switch (item) {
 
+    case 'myPolls':
+      $myPolls.appendTo($main);
+      break;
     case 'signUp':
       $signUpForm.appendTo($main);
       break;

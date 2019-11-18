@@ -1,6 +1,6 @@
 $(() => {
 
-  const $signUpForm = $(`
+  const $newPoll = $(`
   <form id="sign-up-form" class="sign-up-form">
         <p>Sign Up</p>
 
@@ -26,7 +26,7 @@ $(() => {
         </div>
       </form>
   `);
-  window.$signUpForm = $signUpForm;
+  window.$newPoll = $newPoll;
 
   $signUpForm.on('submit', function(event) {
     event.preventDefault();
