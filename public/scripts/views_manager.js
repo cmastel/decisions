@@ -8,6 +8,7 @@ $(() => {
     $logInForm.detach();
     $signUpForm.detach();
     // $newPropertyForm.detach();
+    $signUpForm.detach();
 
 
     switch (item) {

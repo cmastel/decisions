@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const database = require('../db/database.js')
 
@@ -28,19 +28,19 @@ module.exports = (db) => {
   router.get("/me", (req, res) => {
     const userID = req.session.userID;
     if (!userID) {
-      res.send({message: "not logged in"});
+      res.send({ message: "not logged in" });
       return;
     }
 
     database.getUserById(db, userID)
-    .then(user => {
-      if (!userID) {
-        res.send({error: "no user with that id"});
-        return;
-      }
-      res.send({user: {first_name: user.first_name, last_name: user.last_name}});
-    })
-    .catch(e => res.send(e));
+      .then(user => {
+        if (!userID) {
+          res.send({ error: "no user with that id" });
+          return;
+        }
+        res.send({ user: { first_name: user.first_name, last_name: user.last_name } });
+      })
+      .catch(e => res.send(e));
   })
 
 
@@ -50,54 +50,57 @@ module.exports = (db) => {
     let exists;
 
     database.getUserByEmail(db, user.email)
-    .then(data => {
-      if (data.length !== 0) {
-        // redirect to Login page
-        console.log('User exists, not adding to db')
-      } else {
-        user.password = bcrypt.hashSync(user.password, 12);
-        database.addUser(db, user)
-        .then(user => {
-          if (!user) {
-            res.send({error: "error"});
-            return;
-          }
-          req.session.userID = user[0].id;
-          res.send("🤗");
-        })
-        .catch(e => res.send(e));
-      }
-    })
-    .catch(e => res.send(e));
+      .then(data => {
+        if (data.length !== 0) {
+          // redirect to Login page
+          console.log('User exists, not adding to db')
+        } else {
+          user.password = bcrypt.hashSync(user.password, 12);
+          database.addUser(db, user)
+            .then(user => {
+              if (!user) {
+                res.send({ error: "error" });
+                return;
+              }
+              req.session.userID = user[0].id;
+              res.send("🤗");
+            })
+            .catch(e => res.send(e));
+        }
+      })
+      .catch(e => res.send(e));
   });
 
   //User login
-
-  const login =  function(email, password) {
+  const login = function (email, password) {
     return database.getUserByEmail(db, email)
-    .then(user => {
-      if (bcrypt.compareSync(password, user[0].password)) {
-        return user;
-      }
-      return null;
-    });
+      .then(user => {
+        if (bcrypt.compareSync(password, user[0].password)) {
+          return user;
+        }
+        return null;
+      });
   }
 
   router.post('/login', (req, res) => {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
     login(email, password)
       .then(user => {
         if (!user) {
-          res.send({error: "error"});
+          res.send({ error: "error" });
           return;
         }
         req.session.userID = user[0].id;
         res.send("🤗");
       })
       .catch(e => res.send(e));
+
+    router.post('/logout', (req, res) => {
+      req.session.userID = null;
+      res.send({});
+    });
   });
 
 
-
   return router;
-};
+  };

@@ -10,7 +10,7 @@ $(() => {
 
     if (!user) {
       userLinks = `
-      <nav class="nav">
+      <nav class="nav" id="page-header__user-links">
         <div class="nav-title">
             <img class="nav-title-logo" src="./styles/images/Logo.png" />
         </div>
@@ -33,7 +33,7 @@ $(() => {
       `
     } else {
       userLinks = `
-      <nav class="nav">
+      <nav class="nav" id="page-header__user-links">
       <div class="nav-title">
           <img class="nav-title-logo" src="./styles/images/Logo.png" />
       </div>
@@ -72,6 +72,13 @@ $(() => {
 
   $("header").on('click', '#register', () => {
     views_manager.show('signUp');
+  });
+
+  $("header").on('click', '#logout', () => {
+    logOut().then(() => {
+      // header.update(null);
+      updateHeader(null);
+    });
   });
 
 });
