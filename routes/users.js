@@ -63,7 +63,7 @@ module.exports = (db) => {
                 return;
               }
               req.session.userID = user[0].id;
-              res.send("🤗");
+              res.send(user);
             })
             .catch(e => res.send(e));
         }
@@ -91,7 +91,7 @@ module.exports = (db) => {
           return;
         }
         req.session.userID = user[0].id;
-        res.send("🤗");
+        res.send(user);
       })
       .catch(e => res.send(e));
   });

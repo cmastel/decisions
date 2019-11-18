@@ -26,15 +26,9 @@ $(() => {
     const data = $(this).serialize();
     logIn(data)
       .then(json => {
-        console.log(json);
-        if (!json.user) {
-          views_manager.show('error', 'Failed to login');
-          return;
-        }
-        // console.log(json.user);
-        // header.update(json.user);
-        // views_manager.show('listings');
-      });
+         header.update(json[0]);
+      })
+      .catch(e => console.log(e));
   });
 
   // $('body').on('click', '#login-form__cancel', function() {

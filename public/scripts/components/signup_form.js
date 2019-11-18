@@ -33,12 +33,10 @@ $(() => {
     console.log('submit pressed');
     const data = $(this).serialize();
     signUp(data)
-      .then(res => console.log(res))
-      // .then(getMyDetails)
-      // .then((json) => {
-      //   header.update(json.user);
-      //   views_manager.show('listings');
-      // });
+    .then(json => {
+      console.log(json)
+      header.update(json[0]);
+   })
   });
 
   $('body').on('click', '#sign-up-form__cancel', function() {
