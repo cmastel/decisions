@@ -39,10 +39,6 @@ const addNewPoll = function (db, newPoll, userID) {
   const createdDate = created.getFullYear() + '-' + (created.getMonth() + 1) + '-' + created.getDate();
   const values = [
     newPoll.poll_title,
-    // newPoll.response_1,
-    // newPoll.response_2,
-    // newPoll.response_3,
-    // newPoll.response_4,
     userID,
     createdDate
   ]
@@ -56,8 +52,6 @@ const addNewPoll = function (db, newPoll, userID) {
 }
 
 const addNewQuestions = function (db, newQuestions, pollData) {
-  console.log('pollID', pollData);
-  console.log('newQuestions', newQuestions)
   const values =[
     pollData.id,
     newQuestions.poll_question
@@ -65,10 +59,30 @@ const addNewQuestions = function (db, newQuestions, pollData) {
   return db.query(`
     INSERT INTO questions (poll_id, question)
     VALUES ($1, $2)
-    RETURNING *
+    RETURNING *;
   `, values)
-  .then(res => res.rows[0])
+  .then(res => console.log(res.rows[0]))
   .catch(err => console.log(err));
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions };
+const addNewResponses = function (db, newQuestions, questionsData) {
+  const values =[
+    questionsData.id,
+    newQuestions.response_1,
+    newQuestions.response_2,
+    newQuestions.response_3,
+    newQuestions.response_4
+  ]
+  return db.query(`
+    INSERT INTO responses (question_id, choice)
+    VALUES ($1, $2),
+    VALUES ($1, $3),
+    VALUES ($1, $4),
+    VALUES ($1, $5)
+    RETURNING *;
+  `, values)
+  .then(res => console.log(res.rows[0]))
+  .catch(err => console.log(err));
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses };

@@ -48,6 +48,8 @@ const pollRoutes = require("./routes/polls");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/polls", pollRoutes(db));
+app.use("/api/questions", pollRoutes(db));
+app.use("/api/responses", pollRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 

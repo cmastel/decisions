@@ -47,6 +47,19 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM responses;`)
+      .then(data => {
+        const responses = data.rows;
+        res.json({ responses });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      })
+  })
+
   router.post('/new_poll', (req, res) => {
     const newPoll = req.body;
     const userID = req.session.userID;
@@ -55,10 +68,10 @@ module.exports = (db) => {
       console.log('return from polls insert', data)
       database.addNewQuestions(db, newPoll, data)
     })
-    .then(data => {
-      console.log('return from questions insert', data)
+    .then(data2 => {
+      console.log('return from questions insert', data2)
+      database.addNewResponses(db, newPoll, data2)
     })
-
 
   });
 
