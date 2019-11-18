@@ -10,14 +10,27 @@ $(() => {
 
     if (!user) {
       userLinks = `
-      <nav id="page-header__user-links" class="page-header__user-links">
-        <ul>
-          <li class="home">🏠</li>
-          <li class="search_button">Search</li>
-          <li class="login_button">Log In</li>
-          <li class="sign-up_button">Sign Up</li>
-        </ul>
+      <nav class="nav">
+        <div class="nav-title">
+            <img class="nav-title-logo" src="./styles/images/Logo.png" />
+        </div>
+        <div class="nav-body">
+            <ul class="nav-body-list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+          <button id ="register" type="button" class="nav-buttons-style">
+            <span class="nav-buttons-style-font">Register</span>
+          </button>
+          <button type="button" class="nav-buttons-style">
+            <span class="nav-buttons-style-font">Login</span>
+          </button>
+        </div>
       </nav>
+
+
       `
     } else {
       userLinks = `
@@ -45,7 +58,7 @@ $(() => {
 
   // updateHeader();
 
-  $("header").on('click', '.sign-up_button', () => {
+  $("header").on('click', '#register', () => {
     views_manager.show('signUp');
   });
 

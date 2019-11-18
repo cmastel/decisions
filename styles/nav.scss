@@ -1,0 +1,63 @@
+@import './mixins';
+$topbar-responsive-bg: #ffffff;
+$white: #fff;
+$topbar-responsive-animation-type: fade-in; // or use slide-down or none
+
+.nav {
+  background: $topbar-responsive-bg;
+  display: flex;
+  justify-content: space-between;
+  &-title {
+    padding: 12px;
+    margin-left: 1rem;
+    flex-basis: 150px;
+    &-logo{
+      width: 100%;
+    }
+  }
+  &-body {
+    flex: 2;
+    &-list {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 18px;
+
+      li {
+        font-weight: 600;
+        font-size: 20px;
+        color: #006fff;
+        margin: 0 18px;
+        padding: 0 12px;
+      }
+    }
+  }
+  &-buttons {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    &-style {
+      margin: 0 16px;
+      height: 38px;
+      outline: none;
+      border-radius: 38px 38px 38px 38px;
+      background-color: transparent;
+      border: solid rgba(31, 118, 255, 1) 1px;
+      cursor: pointer;
+      &:hover{
+        background-color: rgba(31, 118, 255, 1);
+      }
+      &-font {
+        font-weight: 300;
+        padding: 10px 16px;
+        font-size: 18px;
+        color: #1F76FF;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

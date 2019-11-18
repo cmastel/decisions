@@ -1,7 +1,12 @@
 // See: https://sass-lang.com/
+@import './nav.scss';
+@import './base.scss';
+
+
 
 body {
   background-color: #EEE;
+  font-family: 'Source Sans Pro', sans-serif;
 
   h1 {
     color: #244751;

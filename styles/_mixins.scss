@@ -1,0 +1,30 @@
+$sm-screen: 576px;
+$md-screen: 768px;
+$lg-screen: 1024px;
+$xl-screen: 1600px;
+
+@mixin sm {
+  @media (max-width: #{$md-screen - 0.1px}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$lg-screen - 0.1px}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$lg-screen}) {
+    @content;
+  }
+}
+
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
