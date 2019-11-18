@@ -12,7 +12,7 @@ $(() => {
       userLinks = `
       <nav class="nav" id="page-header__user-links">
         <div class="nav-title">
-            <img class="nav-title-logo" src="./styles/images/Logo.png" />
+            <img class="nav-title-logo" />
         </div>
         <div class="nav-body">
             <ul class="nav-body-list">
@@ -35,7 +35,7 @@ $(() => {
       userLinks = `
       <nav class="nav" id="page-header__user-links">
       <div class="nav-title">
-          <img class="nav-title-logo" src="./styles/images/Logo.png" />
+          <img class="nav-title-logo"  />
       </div>
       <div class="nav-body">
           <ul class="nav-body-list">
