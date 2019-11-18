@@ -5,6 +5,8 @@ $(() => {
   window.views_manager = {};
 
   window.views_manager.show = function(item) {
+    $logInForm.detach();
+    $signUpForm.detach();
     // $newPropertyForm.detach();
 
 
@@ -12,6 +14,9 @@ $(() => {
 
     case 'signUp':
       $signUpForm.appendTo($main);
+      break;
+    case 'logIn':
+      $logInForm.appendTo($main);
       break;
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);

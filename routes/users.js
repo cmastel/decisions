@@ -71,6 +71,32 @@ module.exports = (db) => {
     .catch(e => res.send(e));
   });
 
+  //User login
+
+  const login =  function(email, password) {
+    return database.getUserByEmail(db, email)
+    .then(user => {
+      if (bcrypt.compareSync(password, user[0].password)) {
+        return user;
+      }
+      return null;
+    });
+  }
+
+  router.post('/login', (req, res) => {
+    const {email, password} = req.body;
+    login(email, password)
+      .then(user => {
+        if (!user) {
+          res.send({error: "error"});
+          return;
+        }
+        req.session.userID = user[0].id;
+        res.send("🤗");
+      })
+      .catch(e => res.send(e));
+  });
+
 
 
   return router;

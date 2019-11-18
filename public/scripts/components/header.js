@@ -66,6 +66,10 @@ $(() => {
 
   // updateHeader();
 
+  $("header").on('click', '#login', () => {
+    views_manager.show('logIn');
+  });
+
   $("header").on('click', '#register', () => {
     views_manager.show('signUp');
   });

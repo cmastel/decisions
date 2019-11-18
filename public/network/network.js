@@ -13,3 +13,12 @@ function signUp(data) {
     data
   });
 }
+
+function logIn(data) {
+  console.log('login called')
+  return $.ajax({
+    method: "POST",
+    url: "api/users/login",
+    data
+  });
+}
