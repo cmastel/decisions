@@ -1,47 +1,53 @@
 $(() => {
 
   const $newPoll = $(`
-  <form id="sign-up-form" class="sign-up-form">
-        <p>Sign Up</p>
+  <form id="new-polls-form" class="new-polls-form">
+        <p>New Poll</p>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="text" name="first_name" placeholder="First Name">
+        <div class="new-poll-form__field-wrapper">
+          <input type="text" name="poll_title" placeholder="Title">
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="text" name="last_name" placeholder="Last Name">
+        <div class="new-poll-form__field-wrapper">
+          <input type="text" name="poll_question" placeholder="What is your question?">
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="email" name="email" placeholder="Email">
+        <div class="new-poll-form__field-wrapperr">
+          <input type="text" name="response_1" placeholder="Your first possible answer">
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-            <input type="password" name="password" placeholder="Password">
-          </div>
+        <div class="new-poll-form__field-wrapper">
+            <input type="text" name="response_2" placeholder="Your second possible answer">
+        </div>
 
-        <div class="sign-up-form__field-wrapper">
-            <button>Sign Up</button>
-            <a id="sign-up-form__cancel" href="#">Cancel</a>
+        <div class="new-poll-form__field-wrapper">
+            <input type="text" name="response_3" placeholder="Your third possible answer">
+        </div>
+
+        <div class="new-poll-form__field-wrapper">
+            <input type="text" name="response_4" placeholder="Your fourth possible answer">
+        </div>
+
+        <div class="new-poll-form__field-wrapper">
+            <button>Create New Poll</button>
+            <a id="new-poll-form__cancel" href="#">Cancel</a>
         </div>
       </form>
   `);
   window.$newPoll = $newPoll;
 
-  $signUpForm.on('submit', function(event) {
+  $newPoll.on('submit', function(event) {
     event.preventDefault();
     console.log('submit pressed');
     const data = $(this).serialize();
-    signUp(data)
+    newPoll(data)
     .then(json => {
-      console.log(json)
-      header.update(json[0]);
-      views_manager.show('myPolls', json[0]);
+      views_manager.show('myPolls');
    })
   });
 
-  $('body').on('click', '#sign-up-form__cancel', function() {
-    views_manager.show('listings');
+  $('body').on('click', '#new-poll-form__cancel', function() {
+    views_manager.show('myPolls');
     return false;
   });
 
