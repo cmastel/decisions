@@ -8,6 +8,7 @@ $(() => {
     $logInForm.detach();
     $signUpForm.detach();
     $myPolls.detach();
+    $newPoll.detach();
 
 
     switch (item) {
@@ -15,6 +16,9 @@ $(() => {
     case 'myPolls':
       $myPolls.appendTo($main);
       break;
+    case 'newPoll':
+        $newPoll.appendTo($main);
+        break;
     case 'signUp':
       $signUpForm.appendTo($main);
       break;
