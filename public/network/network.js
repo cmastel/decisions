@@ -34,7 +34,7 @@ function newPoll(data) {
   console.log('newPoll called')
   return $.ajax({
     method: "POST",
-    url: "/api/polls",
+    url: "/api/polls/new_poll",
     data
   });
 }

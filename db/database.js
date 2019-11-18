@@ -30,4 +30,14 @@ const getUserById = function (db, userId) {
   .catch(err => console.log(err));
 }
 
-module.exports = { addUser, getUserByEmail, getUserById };
+const addNewPoll = function (db, newPoll) {
+  console.log('newPoll to db', newPoll);
+
+  return db.query(`
+
+  `)
+  .then(res => res.rows[0])
+  .catch(err => console.log(err));
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, addNewPoll };

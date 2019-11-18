@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const database = require('../db/database.js')
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -23,6 +24,15 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post('/new_poll', (req, res) => {
+    const newPoll = req.body;
+    database.addNewPoll(db, newPoll);
+  });
+
+
+
+
   return router;
 };
 
