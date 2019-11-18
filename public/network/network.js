@@ -29,3 +29,12 @@ function logOut() {
     url: "api/users/logout",
   });
 };
+
+function newPoll(data) {
+  console.log('newPoll called')
+  return $.ajax({
+    method: "POST",
+    url: "/api/polls",
+    data
+  });
+}

@@ -40,10 +40,8 @@ $(() => {
     event.preventDefault();
     console.log('submit pressed');
     const data = $(this).serialize();
-    signUp(data)
+    newPoll(data)
     .then(json => {
-      console.log(json)
-      header.update(json[0]);
       views_manager.show('myPolls');
    })
   });
