@@ -64,14 +64,13 @@ module.exports = (db) => {
     const newPoll = req.body;
     const userID = req.session.userID;
     database.addNewPoll(db, newPoll, userID)
-    .then(data => {
-      console.log('return from polls insert', data)
-      database.addNewQuestions(db, newPoll, data)
+    .then(pollData => {
+      database.addNewQuestions(db, newPoll, pollData)
+      .then(questionData => {
+        database.addNewResponses(db, newPoll, questionData)
+      })
     })
-    .then(data2 => {
-      console.log('return from questions insert', data2)
-      database.addNewResponses(db, newPoll, data2)
-    })
+
 
   });
 

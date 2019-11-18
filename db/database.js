@@ -61,7 +61,7 @@ const addNewQuestions = function (db, newQuestions, pollData) {
     VALUES ($1, $2)
     RETURNING *;
   `, values)
-  .then(res => console.log(res.rows[0]))
+  .then(res => res.rows[0])
   .catch(err => console.log(err));
 }
 
@@ -73,13 +73,13 @@ const addNewResponses = function (db, newQuestions, questionsData) {
     newQuestions.response_3,
     newQuestions.response_4
   ]
+  console.log('values', values);
   return db.query(`
     INSERT INTO responses (question_id, choice)
     VALUES ($1, $2),
-    VALUES ($1, $3),
-    VALUES ($1, $4),
-    VALUES ($1, $5)
-    RETURNING *;
+    ($1, $3),
+    ($1, $4),
+    ($1, $5);
   `, values)
   .then(res => console.log(res.rows[0]))
   .catch(err => console.log(err));
