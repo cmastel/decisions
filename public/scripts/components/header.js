@@ -77,7 +77,7 @@ $(() => {
   $("header").on('click', '#logout', () => {
     logOut().then(() => {
       // header.update(null);
-      views_manager.show('');
+      views_manager.show('mainPage');
       updateHeader(null);
     });
   });

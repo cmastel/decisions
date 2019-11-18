@@ -8,11 +8,15 @@ $(() => {
     $logInForm.detach();
     $signUpForm.detach();
     $myPolls.detach();
+    $mainPage.detach();
 
 
 
     switch (item) {
 
+    case 'mainPage':
+      $mainPage.appendTo($main);
+      break;
     case 'myPolls':
       $myPolls.appendTo($main);
       break;
