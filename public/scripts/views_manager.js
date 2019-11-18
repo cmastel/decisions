@@ -10,6 +10,7 @@ $(() => {
     $myPolls.detach();
 
 
+
     switch (item) {
 
     case 'myPolls':

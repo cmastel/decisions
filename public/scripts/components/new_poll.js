@@ -36,7 +36,7 @@ $(() => {
     .then(json => {
       console.log(json)
       header.update(json[0]);
-      views_manager.show('myPolls');
+      views_manager.show('myPolls', json[0]);
    })
   });
 

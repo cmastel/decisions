@@ -13,11 +13,17 @@ const database = require('../db/database.js')
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const userID = req.session.userID;
     db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
+    .then( data => {
+      for (let i = 0; i < data.rows.length; i++) {
+        if ( data.rows[i].id === userID) {
+          res.send(data.rows[i]);
+          break;
+        }
+      }
+      res.send({});
+     })
       .catch(err => {
         res
           .status(500)
