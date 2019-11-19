@@ -12,8 +12,8 @@ $(() => {
           <label for="poll_question">What is your question?</label>
         </div>
         <div class="form-floating-label">
-          <input type="text" name="response1" class="signup-form-input">
-          <label for="response1"> Your first possible answer</label>
+          <input type="text" name="response_1" class="signup-form-input">
+          <label for="response_1"> Your first possible answer</label>
         </div>
         <div class="form-floating-label">
             <input type="text" name="response_2" class="signup-form-input">
