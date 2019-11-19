@@ -69,12 +69,13 @@ $(() => {
           <div class="admin-main-question">Question:</div>
           <div class="admin-main-question-content">${data.question}</div>
           <ul class="admin-main-list">
-    <li class="admin-main-list-item">${data[0].choise}<span>${data[0].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[1].choise}<span>${data[1].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[2].choise}<span>${data[2].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[3].choise}<span">${data[3].borda_score}</span></li>
+             <li class="admin-main-list-item">${data[0].choice}<span>${data[0].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[1].choice}<span>${data[1].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[2].choice}<span>${data[2].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[3].choice}<span">${data[3].borda_score}</span></li>
           </ul>
         </div>
+        <div><a href="http://localhost:8080/api/urls/${data.admin_url}">http://localhost:8080/api/urls/${data.admin_url}</a></div>
       </div>
       `;
     }
