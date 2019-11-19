@@ -24,6 +24,11 @@ $(() => {
   `);
   window.$guestURL = $guestURL;
 
+  getGuestURL()
+  .then(function( json ) {
+    guestURL(json);
+  })
+
   $guestURL.on('submit', function(event) {
     event.preventDefault();
     console.log('guestURL submit pressed');
