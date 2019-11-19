@@ -75,7 +75,7 @@ $(() => {
             <li class="admin-main-list-item">${data[3].choice}<span">${data[3].borda_score}</span></li>
           </ul>
         </div>
-        <div><a href="http://localhost:8080/api/urls/${data.admin_url}">http://localhost:8080/api/urls/${data.admin_url}</a></div>
+        <div><a href="http://localhost:8080/api/urls/admin/${data.admin_url}">http://localhost:8080/api/urls/admin/${data.admin_url}</a></div>
       </div>
       `;
     }
