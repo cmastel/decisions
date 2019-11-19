@@ -87,7 +87,7 @@ const addNewResponses = function (db, newQuestions, questionsData) {
   .catch(err => console.log(err));
 }
 
-const getPollDetails = function (db, admin_url) {
+const getPollDetailsDB = function (db, admin_url) {
   const values = [
     admin_url
   ]
@@ -102,4 +102,4 @@ return db.query(`
 .catch(err => console.log(err));
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses, getPollDetails };
+module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses, getPollDetailsDB };

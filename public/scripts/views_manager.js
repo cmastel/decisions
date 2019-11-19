@@ -9,24 +9,20 @@ $(() => {
     $signUpForm.detach();
     $myPolls.detach();
     $mainPage.detach();
-    //$adminPage.detach();
     $newPoll.detach();
 
 
     switch (item) {
 
-    // case 'adminPage':
-    //   $adminPage.appendTo($main);
-    //   break;
-    case 'mainPage':
-      $mainPage.appendTo($main);
-      break;
     case 'myPolls':
       $myPolls.appendTo($main);
       break;
     case 'newPoll':
-        $newPoll.appendTo($main);
-        break;
+      $newPoll.appendTo($main);
+      break;
+    case 'mainPage':
+      $mainPage.appendTo($main);
+      break;
     case 'signUp':
       $signUpForm.appendTo($main);
       break;

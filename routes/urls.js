@@ -27,7 +27,7 @@ module.exports = (db) => {
     }
     const admin_url = req.params.admin_url;
     // res.send({ url: admin_url })
-    database.getPollDetails(db, admin_url)
+    database.getPollDetailsDB(db, admin_url)
       .then(pollDetails => {
         res.send( pollDetails );
       })

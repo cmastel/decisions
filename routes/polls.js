@@ -71,9 +71,9 @@ module.exports = (db) => {
       database.addNewQuestions(db, newPoll, pollData)
       .then(questionData => {
         database.addNewResponses(db, newPoll, questionData)
-        .then(() => {
+        .then((data) => {
           console.log('polldata', pollData)
-          res.send(pollData)
+          res.send({...data, ...pollData, ...questionData})
         })
         .catch(err => {
           res

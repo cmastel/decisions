@@ -21,8 +21,9 @@ module.exports = (db) => {
           res.send(data.rows[i]);
           break;
         }
+        res.send({});
+        break;
       }
-      res.send({});
      })
       .catch(err => {
         res

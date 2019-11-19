@@ -36,12 +36,51 @@ $(() => {
     newPoll(data)
     .then(json => {
       console.log('json', json);
+      updateAdminPage(json)
    })
   });
+
 
   $('body').on('click', '#new-poll-form__cancel', function() {
     views_manager.show('myPolls');
     return false;
   });
+
+
+
+  window.adminPage = {};
+
+  const $adminPage = $('#main-content');
+
+  function updateAdminPage(data) {
+
+    $adminPage.find('#admin').remove();
+
+    let userPoll;
+
+    if(Object.keys(data).length === 0) {
+      userPoll = null;
+    } else {
+      views_manager.show('');
+      userPoll= `
+      <div class="admin">
+        <h2 class="admin-title">${data.title}</h2>
+        <div class="admin-main">
+          <div class="admin-main-question">Question:</div>
+          <div class="admin-main-question-content">${data.question}</div>
+          <ul class="admin-main-list">
+    <li class="admin-main-list-item">${data[0].choise}<span>${data[0].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[1].choise}<span>${data[1].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[2].choise}<span>${data[2].borda_score}</span></li>
+            <li class="admin-main-list-item">${data[3].choise}<span">${data[3].borda_score}</span></li>
+          </ul>
+        </div>
+      </div>
+      `;
+    }
+   $adminPage.append(userPoll);
+  }
+
+   window.adminPage.update = updateAdminPage;
 
 });

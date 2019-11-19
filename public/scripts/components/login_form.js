@@ -26,10 +26,11 @@ $(() => {
     const data = $(this).serialize();
     logIn(data)
       .then(json => {
-        if(!json) {
+        if(json) {
           header.update(json[0]);
           views_manager.show('myPolls');
         } else {
+          console.log(json[0])
           views_manager.show('signUp');
         }
       })

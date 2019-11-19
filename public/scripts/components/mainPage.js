@@ -16,6 +16,8 @@ $(() => {
     .then(res => {
       if (!res) {
         views_manager.show('logIn');
+      } else {
+        views_manager.show('myPolls');
       }
     })
     .catch(e => console.log(e));
