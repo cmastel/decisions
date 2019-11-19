@@ -10,7 +10,6 @@ const app     = express();
 const router  = express.Router();
 const database = require('../db/database.js')
 const cookieSession = require('cookie-session');
-const cuid    = require('cuid');
 
 app.use(cookieSession({
   name: 'session',
@@ -18,12 +17,25 @@ app.use(cookieSession({
 }));
 
 module.exports = (db) => {
-  router.get("/:adminUrl", (req, res) => {
-  console.log('req.params', req.params);
-    // database.getUrlDetails(db, req.pa)
+  router.get("/:admin_url", (req, res) => {
+    const userID = req.session.userID;
+    console.log(req.session.userID)
+    if (!userID) {
+      console.log("Not a user!");
+      res.send(null);
+      return;
+    }
+    const admin_url = req.params.admin_url;
+    // res.send({ url: admin_url })
+    database.getPollDetails(db, admin_url)
+      .then(pollDetails => {
+        // res.send({ user: { first_name: user.first_name, last_name: user.last_name } });
+        res.send( pollDetails );
+      })
+    //   })
+    //   .catch(e => res.send(e));
 
   });
-
 
   return router;
 };

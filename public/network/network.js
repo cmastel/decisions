@@ -38,3 +38,12 @@ function newPoll(data) {
     data
   });
 }
+
+function getPollDetails(admin_url) {
+  console.log('getPollData called');
+  return $.ajax({
+    method: "GET",
+    url: `/api/urls/:${admin_url}`,
+    data
+  })
+}

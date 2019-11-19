@@ -50,7 +50,7 @@ const urlsRoutes = require("./routes/urls");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/", pollRoutes(db));
-app.use("/api/urls", pollRoutes(db));
+app.use("/api/urls", urlsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
