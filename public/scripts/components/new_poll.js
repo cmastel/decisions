@@ -76,6 +76,7 @@ $(() => {
           </ul>
         </div>
         <div><a href="http://localhost:8080/api/urls/admin/${data.admin_url}">http://localhost:8080/api/urls/admin/${data.admin_url}</a></div>
+        <div><a href="http://localhost:8080/api/urls/guest/${data.guest_url}">http://localhost:8080/api/urls/guest/${data.guest_url}</a></div>
       </div>
       `;
     }

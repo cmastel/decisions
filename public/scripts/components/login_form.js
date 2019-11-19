@@ -1,19 +1,21 @@
 $(() => {
 
   const $logInForm = $(`
-  <form id="login-form" class="login-form">
+  <form id="login-form" class="signup-form">
       <p>Login</p>
-      <div class="login-form__field-wrapper">
-        <input type="email" name="email" placeholder="Email">
+      <div class="form-floating-label">
+        <input type="email" class="signup-form-input" name="email">
+        <label for="email">Email</label>
       </div>
 
-      <div class="login-form__field-wrapper">
-          <input type="password" name="password" placeholder="Password">
-        </div>
+      <div class="form-floating-label">
+        <input type="password" class="signup-form-input" name="password">
+        <label for="password">Password</label>
+      </div>
 
-      <div class="login-form__field-wrapper">
-          <button>Login</button>
-          <a id="login-form__cancel" href="#">Cancel</a>
+      <div class="signup-form-buttons">
+        <button class="signup-form-buttons-btn type="Submit"">Login</button>
+        <button  class="signup-form-buttons-btn cancel-btn" type="button" >Cancel</button>
       </div>
     </form>
   `);
@@ -36,9 +38,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  // $('body').on('click', '#login-form__cancel', function() {
-  //   views_manager.show('listings');
-  //   return false;
-  // });
+  $logInForm.find('.cancel-btn').on('click', () => views_manager.show('mainPage'));
+
 
 });
