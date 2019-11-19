@@ -67,7 +67,6 @@ $(() => {
       updateHeader(json.user);
     })
 
-  // updateHeader();
 
   $("header").on('click', '#login', () => {
     views_manager.show('logIn');
