@@ -17,7 +17,7 @@ app.use(cookieSession({
 }));
 
 module.exports = (db) => {
-  router.get("/:admin_url", (req, res) => {
+  router.get("/admin/:admin_url", (req, res) => {
     const userID = req.session.userID;
     console.log(req.session.userID)
     if (!userID) {
@@ -26,14 +26,23 @@ module.exports = (db) => {
       return;
     }
     const admin_url = req.params.admin_url;
-    // res.send({ url: admin_url })
     database.getPollDetails(db, admin_url)
       .then(pollDetails => {
         res.send( pollDetails );
       })
       .catch(e => res.send(e));
-
   });
+
+  router.get("/guest/:guest_url", (req, res) => {
+    const guest_url = req.params.guest_url;
+    console.log('guestURL', guest_url)
+    database.getGuestPoll(db, guest_url)
+      .then(pollDetails => {
+        res.send( pollDetails );
+      })
+      .catch(e => res.send(e));
+    });
+
 
   return router;
 };

@@ -89,7 +89,7 @@ const addNewResponses = function (db, newQuestions, questionsData) {
 
 const getPollDetails = function (db, admin_url) {
   const values = [
-    admin_url
+    admin_url,
   ]
 return db.query(`
   SELECT *
@@ -102,4 +102,19 @@ return db.query(`
 .catch(err => console.log(err));
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses, getPollDetails };
+const getGuestPoll = function (db, guest_url) {
+  const values = [
+    guest_url,
+  ]
+return db.query(`
+  SELECT polls.title, questions.question, responses.choice
+  FROM polls
+  JOIN questions ON polls.id = questions.poll_id
+  JOIN responses ON questions.id = responses.question_id
+  WHERE polls.guest_url = $1;
+`, values)
+.then(res => res.rows)
+.catch(err => console.log(err));
+}
+
+module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses, getPollDetails, getGuestPoll };

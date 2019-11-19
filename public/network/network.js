@@ -5,6 +5,22 @@ function getMyDetails() {
   });
 };
 
+function getPollDetails(admin_url) {
+  console.log('getPollData called');
+  return $.ajax({
+    method: "GET",
+    url: `/api/urls/admin/:${admin_url}`,
+    data
+  })
+}
+
+function getGuestURL(guest_url) {
+  return $.ajax({
+    method: "GET",
+    url: `/api/urls/guest/:${guest_url}`,
+  });
+};
+
 function signUp(data) {
   console.log('signUp called')
   return $.ajax({
@@ -39,11 +55,5 @@ function newPoll(data) {
   });
 }
 
-function getPollDetails(admin_url) {
-  console.log('getPollData called');
-  return $.ajax({
-    method: "GET",
-    url: `/api/urls/:${admin_url}`,
-    data
-  })
-}
+
+
