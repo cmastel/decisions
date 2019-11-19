@@ -7,10 +7,10 @@ $(() => {
   window.views_manager.show = function(item) {
     $logInForm.detach();
     $signUpForm.detach();
-    $myPolls.detach();
     $mainPage.detach();
     $newPoll.detach();
     $guestURL.detach();
+    $myPolls.detach();
 
 
     switch (item) {

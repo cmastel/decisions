@@ -10,11 +10,4 @@ $(() => {
     }
   });
 
-  // $.ajax({
-  //   method: "GET",
-  //   url: `/api/urls/test`,
-  // }).done(() => {
-  //   views_manager.show('logIn');
-  // })
-
 });

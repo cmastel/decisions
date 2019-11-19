@@ -1,13 +1,11 @@
 $(() => {
-  window.myPolls = {};
-
-  const $myPolls = $('#main-content');
+  const $myPolls = $('#div-content');
 
   function updatePolls() {
-    $myPolls.find("#my_polls").remove();
+    console.log('updatePolls is running');
+    // $myPolls.find("#my_polls").remove();
     const pollInfo = `
     <section class="my_polls" id="my_polls">
-      <p>TEST</p>
       <button id="create_new_poll">CREATE</button>
       <div>
       <h2 class="my_polls">My Polls</h2>
@@ -38,41 +36,36 @@ $(() => {
       <p>Loading...</p>
     </section>
     `
-  $myPolls.append(pollInfo);
-}
-
-const addTableRow = function(data) {
-  const nextRow = `
-    <tr>
-      <td>${data.id}</td>
-      <td>${data.title}</td>
-      <td>${data.created_on}</td>
-      <td>
-        <form>
-        <button type="submit"
-                class="btn btn-outline-danger"> Delete </button>
-        </form>
-      </td>
-    </tr>
-  `
-  // $("#table-body").append(nextRow)
-  return nextRow;
-}
-
-window.myPolls.update = updatePolls;
-
-updatePolls();
-
-getPollsById()
-.then(function( json ) {
-  for (let el of json) {
-    $myPolls.find('tbody').append(addTableRow(el));
+    $myPolls.append(pollInfo);
   }
-})
 
+  const addTableRow = function(data) {
+    const nextRow = `
+      <tr>
+        <td>${data.id}</td>
+        <td>${data.title}</td>
+        <td>${data.created_on}</td>
+        <td>
+          <form>
+          <button type="submit"
+                  class="btn btn-outline-danger"> Delete </button>
+          </form>
+        </td>
+      </tr>
+    `
+    return nextRow;
+  }
 
+  window.$myPolls = $myPolls;
 
+  updatePolls();
 
+  getPollsById()
+  .then(function( json ) {
+    for (let el of json) {
+      $myPolls.find('tbody').append(addTableRow(el));
+    }
+  })
 
   $myPolls.on('click', '#create_new_poll', (event) => {
     event.preventDefault();
@@ -80,5 +73,6 @@ getPollsById()
   });
 
 
-
 });
+
+
