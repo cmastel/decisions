@@ -35,7 +35,7 @@ $(() => {
     const data = $(this).serialize();
     newPoll(data)
     .then(json => {
-      views_manager.show('myPolls');
+      console.log('json', json);
    })
   });
 

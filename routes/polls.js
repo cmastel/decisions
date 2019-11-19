@@ -10,6 +10,7 @@ const app     = express();
 const router  = express.Router();
 const database = require('../db/database.js')
 const cookieSession = require('cookie-session');
+const cuid    = require('cuid');
 
 app.use(cookieSession({
   name: 'session',
@@ -62,12 +63,23 @@ module.exports = (db) => {
 
   router.post('/new_poll', (req, res) => {
     const newPoll = req.body;
+    newPoll.adminUrl = cuid();
+    newPoll.guestUrl = cuid();
     const userID = req.session.userID;
     database.addNewPoll(db, newPoll, userID)
     .then(pollData => {
       database.addNewQuestions(db, newPoll, pollData)
       .then(questionData => {
         database.addNewResponses(db, newPoll, questionData)
+        .then(() => {
+          console.log('polldata', pollData)
+          res.send(pollData)
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message })
+        })
       })
     })
 
