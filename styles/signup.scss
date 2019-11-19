@@ -41,17 +41,31 @@ $highlight-color: dodgerblue;
 .form-floating-label {
   position: relative;
 
+  [type='text'],
+  [type='password'],
+  [type='date'],
+  [type='datetime'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='week'],
+  [type='email'],
+  [type='number'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='url'],
+  [type='color'],
+
 
   textarea {
     margin-bottom: 0;
-    color: rgb(179, 179, 179);
+
     font-size: 18px;
     font-weight: 300;
     padding: 30px 1rem 1rem 25px;
   }
 
   label {
-    color: rgb(179, 179, 179);
     color: $highlight-color;
     font-size: 18px;
     position: absolute;
@@ -70,7 +84,7 @@ $highlight-color: dodgerblue;
 
   /* active state */
   input:focus ~ label,
-  input:disabled[text] ~ label,
+  input:disabled[value] ~ label,
   &.has-value input ~ label {
     top: 0;
     font-size: 12px;
