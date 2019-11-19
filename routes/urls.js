@@ -29,11 +29,9 @@ module.exports = (db) => {
     // res.send({ url: admin_url })
     database.getPollDetails(db, admin_url)
       .then(pollDetails => {
-        // res.send({ user: { first_name: user.first_name, last_name: user.last_name } });
         res.send( pollDetails );
       })
-    //   })
-    //   .catch(e => res.send(e));
+      .catch(e => res.send(e));
 
   });
 

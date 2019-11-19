@@ -94,6 +94,8 @@ const getPollDetails = function (db, admin_url) {
 return db.query(`
   SELECT *
   FROM polls
+  JOIN questions ON polls.id = questions.poll_id
+  JOIN responses ON questions.id = responses.question_id
   WHERE polls.admin_url = $1;
 `, values)
 .then(res => res.rows)
