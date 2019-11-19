@@ -40,7 +40,18 @@ module.exports = (db) => {
     console.log('guestURL', guest_url)
     database.getGuestPoll(db, guest_url)
       .then(pollDetails => {
-        res.send( pollDetails );
+        console.log('pollDetails', pollDetails);
+
+
+        const templateVars = {
+          title: pollDetails[0].title,
+          question: pollDetails[0].question,
+          choice1: pollDetails[0].choice,
+          choice2: pollDetails[1].choice,
+          choice3: pollDetails[2].choice,
+          choice4: pollDetails[3].choice
+        }
+        res.render('guest', templateVars);
       })
       .catch(e => res.send(e));
     });

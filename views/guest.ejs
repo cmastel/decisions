@@ -12,12 +12,31 @@
   </head>
 
   <body>
-      <header id="page-header" class="page-header"></header>
-    <h1>Hello World!</h1>
-    <img src="/static/images/Logo.png">
+    <header id="page-header" class="page-header"></header>
+    <h2><%= title %></h2>
+    <h3><%= question %></h3>
+    <form id="guest-url-form" class="guest-url-form">
+          <div class="guest-url-form__field-wrapperr">
+            <input type="text" name="response_1" placeholder=<%= choice1 %>>
+          </div>
+          <div class="guest-url-form__field-wrapper">
+              <input type="text" name="response_2" placeholder=<%= choice2 %>>
+          </div>
+          <div class="guest-url-form__field-wrapper">
+              <input type="text" name="response_3" placeholder=<%= choice3 %>>
+          </div>
+          <div class="guest-url-form__field-wrapper">
+              <input type="text" name="response_4" placeholder=<%= choice4 %>>
+          </div>
+          <div class="guest-url-form__field-wrapper">
+              <button>Submit</button>
+          </div>
+        </form>
+
+
 
   </body>
-  <script type="text/javascript" src="../public/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <script type="text/javascript" src="/network/network.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
