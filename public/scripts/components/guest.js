@@ -36,6 +36,8 @@ $(() => {
     updateGuestURL(json);
   })
 
+  console.log(getGuestURL())
+
   $guestURL.on('submit', function(event) {
     event.preventDefault();
     console.log('guestURL submit pressed');
@@ -45,6 +47,8 @@ $(() => {
       console.log('json', json);
    })
   });
+
+
 
   $('body').on('click', '#guest-url__cancel', function() {
     views_manager.show('mainPage');

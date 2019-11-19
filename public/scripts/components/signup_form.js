@@ -1,28 +1,32 @@
 $(() => {
 
   const $signUpForm = $(`
-  <form id="sign-up-form" class="sign-up-form">
+  <form id="sign-up-form" class="signup-form">
         <p>Sign Up</p>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="text" name="first_name" placeholder="First Name">
+        <div class="form-floating-label">
+          <input id="first-name" class="signup-form-input" type="text" name="first_name">
+          <label for="first_name">First name</label>
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="text" name="last_name" placeholder="Last Name">
+        <div class="form-floating-label">
+          <input type="text" class="signup-form-input" name="last_name">
+          <label for="last_name">Last name</label>
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-          <input type="email" name="email" placeholder="Email">
+        <div class="form-floating-label">
+          <input type="email" class="signup-form-input" name="email">
+          <label for="email">Email</label>
         </div>
 
-        <div class="sign-up-form__field-wrapper">
-            <input type="password" name="password" placeholder="Password">
+        <div class="form-floating-label">
+            <input type="password" class="signup-form-input" name="password">
+            <label for="password">Password</label>
           </div>
 
-        <div class="sign-up-form__field-wrapper">
-            <button>Sign Up</button>
-            <a id="sign-up-form__cancel" href="#">Cancel</a>
+        <div class="signup-form-buttons">
+            <button class="signup-form-buttons-btn" type="Submit">Sign Up</button>
+            <button class="signup-form-buttons-btn cancel-btn" type="button" >Cancel</button>
         </div>
       </form>
   `);
@@ -40,9 +44,6 @@ $(() => {
    })
   });
 
-  $('body').on('click', '#sign-up-form__cancel', function() {
-    views_manager.show('listings');
-    return false;
-  });
+  $signUpForm.find('.cancel-btn').on('click', () => views_manager.show('mainPage'));
 
 });

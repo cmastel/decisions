@@ -1,29 +1,35 @@
 $(() => {
 
   const $newPoll = $(`
-  <form id="new-polls-form" class="new-polls-form">
+  <form id="new-polls-form" class="signup-form">
         <p>New Poll</p>
-        <div class="new-poll-form__field-wrapper">
-          <input type="text" name="poll_title" placeholder="Title">
+        <div class="form-floating-label">
+          <input type="text" name="poll_title" class="signup-form-input">
+          <label for="poll_title">Title</label>
         </div>
-        <div class="new-poll-form__field-wrapper">
-          <input type="text" name="poll_question" placeholder="What is your question?">
+        <div class="form-floating-label">
+          <input type="text" name="poll_question" class="signup-form-input" >
+          <label for="poll_question">What is your question?</label>
         </div>
-        <div class="new-poll-form__field-wrapperr">
-          <input type="text" name="response_1" placeholder="Your first possible answer">
+        <div class="form-floating-label">
+          <input type="text" name="response1" class="signup-form-input">
+          <label for="response1"> Your first possible answer</label>
         </div>
-        <div class="new-poll-form__field-wrapper">
-            <input type="text" name="response_2" placeholder="Your second possible answer">
+        <div class="form-floating-label">
+            <input type="text" name="response_2" class="signup-form-input">
+            <label for="response_2"> Your second possible answer</label>
         </div>
-        <div class="new-poll-form__field-wrapper">
-            <input type="text" name="response_3" placeholder="Your third possible answer">
+        <div class="form-floating-label"">
+            <input type="text" name="response_3" class="signup-form-input">
+            <label for="response_3"> Your third possible answer</label>
         </div>
-        <div class="new-poll-form__field-wrapper">
-            <input type="text" name="response_4" placeholder="Your fourth possible answer">
+        <div class="form-floating-label">
+            <input type="text" name="response_4" class="signup-form-input">
+            <label for="response_4"> Your fourth possible answer</label>
         </div>
-        <div class="new-poll-form__field-wrapper">
-            <button>Create New Poll</button>
-            <a id="new-poll-form__cancel" href="#">Cancel</a>
+        <div class="signup-form-buttons">
+            <button class="signup-form-buttons-btn" type="Submit">Submit</button>
+            <button class="signup-form-buttons-btn " type="button" >Cancel</button>
         </div>
       </form>
   `);
@@ -41,10 +47,13 @@ $(() => {
   });
 
 
-  $('body').on('click', '#new-poll-form__cancel', function() {
+  $newPoll.find('.cancel-btn').on('click', () => views_manager.show('mainPage'));
+
+    $('body').on('click', '#new-poll-form__cancel', function() {
     views_manager.show('myPolls');
     return false;
   });
+
 
 
 
