@@ -117,4 +117,27 @@ return db.query(`
 .catch(err => console.log(err));
 }
 
-module.exports = { addUser, getUserByEmail, getUserById, addNewPoll, addNewQuestions, addNewResponses, getPollDetailsDB, getGuestPoll };
+const getPollsById = function (db, user_id) {
+  const values = [
+    user_id
+  ]
+return db.query(`
+  SELECT *
+  FROM polls
+  WHERE polls.user_id = $1;
+`, values)
+.then(res => res.rows)
+.catch(err => console.log(err));
+}
+
+module.exports = {
+  addUser,
+  getUserByEmail,
+  getUserById,
+  addNewPoll,
+  addNewQuestions,
+  addNewResponses,
+  getPollDetailsDB,
+  getGuestPoll,
+  getPollsById,
+};

@@ -63,4 +63,12 @@ function getPollDetails(admin_url) {
   })
 }
 
+function getPollsById() {
+  console.log('getPollsById called');
+  return $.ajax({
+    method: "GET",
+    url: `/api/polls/user`
+  })
 
+
+}

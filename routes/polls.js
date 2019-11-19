@@ -82,10 +82,22 @@ module.exports = (db) => {
         })
       })
     })
-
-
   });
 
+  router.get("/polls/user", (req, res) => {
+    const userID = req.session.userID;
+    console.log('userID', req.session.userID)
+    if (!userID) {
+      res.send(null);
+      return;
+    }
+
+    database.getPollsById(db, userID)
+      .then(polls => {
+        res.send(polls);
+      })
+      .catch(e => res.send(e));
+  })
 
 
 
