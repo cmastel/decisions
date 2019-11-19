@@ -29,8 +29,8 @@ module.exports = (db) => {
     // res.send({ url: admin_url })
     database.getPollDetailsDB(db, admin_url)
       .then(pollDetails => {
-        res.send( pollDetails );
-        //res.render('index', pollDetails)
+        //res.send( pollDetails );
+        res.render('index', pollDetails)
       })
       .catch(e => res.send(e));
   });
