@@ -36,9 +36,14 @@ $(() => {
     }).done((res) => {
      if (res.message === 'done') {
       $('.container').remove();
-      $('#page-header').load('/static/thanks.html', () => alert('Load was performed.'));
+      $('#guest-header').load('/static/thanks.html');
      } else {
-      alert(res.message);
+
+      $('#guest-header-title').fadeOut('slow', () => {
+        $('#guest-header-title').load('/static/error.html', () => {
+            $('#guest-header-title').fadeIn('slow');
+        });
+       });
      }
     });
 

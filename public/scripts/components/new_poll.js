@@ -72,21 +72,55 @@ $(() => {
     } else {
       views_manager.show('');
       userPoll= `
-      <div class="admin">
-        <h2 class="admin-title">${data.title}</h2>
-        <div class="admin-main">
-          <div class="admin-main-question">Question:</div>
-          <div class="admin-main-question-content">${data.question}</div>
-          <ul class="admin-main-list">
-             <li class="admin-main-list-item">${data[0].choice}<span>${data[0].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[1].choice}<span>${data[1].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[2].choice}<span>${data[2].borda_score}</span></li>
-            <li class="admin-main-list-item">${data[3].choice}<span">${data[3].borda_score}</span></li>
-          </ul>
+
+
+      <header id="guest-header" class="guest-header">
+      <p id="guest-header-title">
+          Current results of the poll
+      </p>
+    </header>
+    <div class="container">
+      <p class="guest-title">${data.title}</p>
+      <p class="guest-question">${data.question}</p>
+      <form id="guest-url-form" class="guest-url-form">
+        <ul class="list-choises">
+          <li id="first-choise" class="list-choises-item" data-question_id="<%= question_id %>" data-id1="<%= choice1_id %>">
+            <span>${data[0].choice}</span>
+            <span>${data[0].borda_score}</span>
+          </li>
+          <li id="second-choise" class="list-choises-item" data-id2="<%= choice2_id %>">
+            <span>${data[1].choice}</span>
+            <span>${data[1].borda_score}</span>
+          </li>
+          <li id="third-choise" class="list-choises-item" data-id3="<%= choice3_id %>">
+            <span>${data[2].choice}</span>
+            <span>${data[2].borda_score}</span>
+          </li>
+          <li id="fourth-choise" class="list-choises-item" data-id4="<%= choice4_id %>">
+            <span>${data[3].choice}</span>
+            <span>${data[3].borda_score}</span>
+          </li>
+        </ul>
+          <div class="guest-url-form__field-wrapper">
+          </div>
+        </form>
+        <div class="admin-urls">
+          <p class="admin-urls-title">Links:</p>
+          <div class="admin-urls-row">
+            <p class="admin-urls-row-text">Admin's:</p>
+            <div class="admin-urls-links">
+              <a href="http://localhost:8080/api/urls/admin/${data.admin_url}">http://localhost:8080/api/urls/admin/${data.admin_url}</a>
+            </div>
+          </div>
+          <div class="admin-urls-row">
+            <p class="admin-urls-row-text">Guest's:</p>
+          <div class="admin-urls-links">
+            <a href="http://localhost:8080/api/urls/guest/${data.guest_url}">http://localhost:8080/api/urls/guest/${data.guest_url}</a>
+          </div>
+          </div>
+          </div>
         </div>
-        <div><a href="http://localhost:8080/api/urls/admin/${data.admin_url}">http://localhost:8080/api/urls/admin/${data.admin_url}</a></div>
-        <div><a href="http://localhost:8080/api/urls/guest/${data.guest_url}">http://localhost:8080/api/urls/guest/${data.guest_url}</a></div>
-        </div>
+      </div>
       `;
     }
    $adminPage.append(userPoll);

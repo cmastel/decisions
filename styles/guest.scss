@@ -1,9 +1,41 @@
 .guest {
+  &-header {
+    padding: 0 80px;
+    margin-top: 30px;
+    min-height: 120px;
+    text-align: center;
+    font-size: 48px;
+    color: rgba(0, 0, 0, 0.8);
+
+    &-title {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  &-error {
+    width: 380px;
+    min-height: 120px;
+    font-size: 24px;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.6);
+    border-radius: 5px;
+    background-color: hsla(0, 100%, 50%, 0.08);
+    color: black;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.4s linear, opacity 0.4s linear, height 0.4s linear;
+  }
   &-title {
     margin: 20px auto;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.8);
   }
   &-question {
     margin: 20px auto;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.8);
   }
   &-url-form {
     border: solid rgba(0, 0, 0, 0.5) 3px;
@@ -51,17 +83,46 @@
 	padding: 0 4px;
   min-height: 60px;
   max-height: 360px;
+  color: rgba(0, 0, 0, 0.8);
+  &-item {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid rgba(31, 117, 255, 0.6);
+    box-shadow: 8px 8px 4px -7px rgba(31, 117, 255, 0.6);
+    padding: 12px 18px;
+    margin: 8px 0;
+  }
 }
 
-.list-choises-item {
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 4px;
-  background-color: white;
-  border: 1px solid rgba(31, 117, 255, 0.6);
-  box-shadow: 8px 8px 4px -7px rgba(31, 117, 255, 0.6);
-  padding: 12px;
-  margin: 8px 0;
+.admin-urls {
+  margin: 20px auto;
+  padding: 10px;
+  height: 150px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  &-title {
+    font-size: 32px;
+  }
+  &-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &-text {
+      font-size: 24px;
+      margin: auto 20px;
+      text-align: center;
+    }
+  }
+  &-links {
+    margin: 10px auto;
+    min-width: 480px;
+    padding: 10px;
+    border-bottom: 2px solid rgba(31, 117, 255, 0.9);
+  }
 }

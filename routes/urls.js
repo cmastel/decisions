@@ -27,9 +27,28 @@ module.exports = (db) => {
       return;
     }
     const admin_url = req.params.admin_url;
-    database.getPollDetailsDB(db, admin_url)
+    database.getAdminPoll(db, admin_url)
       .then(pollDetails => {
-        res.render('index', pollDetails)
+        const templateVars = {
+          title: pollDetails[0].title,
+          question: pollDetails[0].question,
+          choice1: pollDetails[0].choice,
+          choice1_id: pollDetails[0].id,
+          score1: pollDetails[0].score,
+          choice2: pollDetails[1].choice,
+          choice2_id: pollDetails[1].id,
+          score2: pollDetails[1].score,
+          choice3: pollDetails[2].choice,
+          choice3_id: pollDetails[2].id,
+          score3: pollDetails[2].score,
+          choice4: pollDetails[3].choice,
+          choice4_id: pollDetails[3].id,
+          score4: pollDetails[3].score,
+          question_id: pollDetails[0].question_id,
+          admin_url: pollDetails[0].admin_url,
+          guest_url: pollDetails[0].guest_url
+        }
+        res.render('admin', templateVars)
       })
       .catch(e => res.send(e));
   });
@@ -38,7 +57,6 @@ module.exports = (db) => {
     const guest_url = req.params.guest_url;
     database.getGuestPoll(db, guest_url)
       .then(pollDetails => {
-        console.log(pollDetails)
         const templateVars = {
           title: pollDetails[0].title,
           question: pollDetails[0].question,
@@ -60,11 +78,10 @@ module.exports = (db) => {
 
   router.post("/guest/:guest_url", (req, res) => {
     console.log('req', req.body);
-    // if (req.session.voteID === req.body.question_id) {
-    //   console.log("YES TO  COOKIES")
-    //   res.send({message: 'You voted already!'});
-    // } else {
-    req.session.voteID = req.body.question_id;
+    if (req.session.voteID === req.body.question_id) {
+      res.send({message: 'You voted already!'});
+    } else {
+      req.session.voteID = req.body.question_id;
 
 
     const score_1 = convertNumber.switchStatement(req.body.response_1);
@@ -84,7 +101,7 @@ module.exports = (db) => {
     helpers.emailNewSubmission(db, questionID);
 
     res.send({message: 'done'});
-    // }
+    }
 
   })
   return router;
