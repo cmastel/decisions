@@ -63,7 +63,7 @@ $(() => {
   getPollsById()
   .then(function( json ) {
     for (let el of json) {
-      $myPolls.find('tbody').append(addTableRow(el));
+      $myPolls.find('tbody').prepend(addTableRow(el));
     }
   })
 
