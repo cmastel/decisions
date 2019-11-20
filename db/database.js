@@ -133,8 +133,11 @@ return db.query(`
 const updateBorda = function (db, values) {
   return db.query(`
     UPDATE responses
-    SET borda_score
-  `)
+    SET borda_score = borda_score + $1
+    WHERE id = $2;
+  `, values)
+  .then(res => res.rows)
+  .catch(err => console.log(err));
 
 }
 

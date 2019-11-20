@@ -26,7 +26,7 @@ $(() => {
       method: "POST",
       url: "/api/urls/guest/:guest_url",
       data: data
-    }).done((user) => {
+    }).done(() => {
       console.log('DONE')
     });
 

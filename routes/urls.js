@@ -8,8 +8,9 @@
 const express = require('express');
 const app     = express();
 const router  = express.Router();
-const database = require('../db/database.js')
+const database = require('../db/database.js');
 const cookieSession = require('cookie-session');
+const convertNumber = require("./helpers.js");
 
 app.use(cookieSession({
   name: 'session',
@@ -58,20 +59,19 @@ module.exports = (db) => {
   router.post("/guest/:guest_url", (req, res) => {
     console.log('req', req.body)
      req.session.voteID = req.body.poll_id;
-    const poll_id = req.body.poll_id;
-    const score_1 = req.body.response_1;
-    const score_2 = req.body.response_2;
-    const score_3 = req.body.response_3;
-    const score_4 = req.body.response_4;
+    const score_1 = convertNumber.switchStatement(req.body.response_1);
+    const score_2 = convertNumber.switchStatement(req.body.response_2);
+    const score_3 = convertNumber.switchStatement(req.body.response_3);
+    const score_4 = convertNumber.switchStatement(req.body.response_4);
     const id_1 = req.body.id1;
     const id_2 = req.body.id2;
     const id_3 = req.body.id3;
     const id_4 = req.body.id4;
-    console.log('currentScores', score_1, score_2, score_3, score_4);
-    database.updateBorda(db, [poll_id, score_1, score_2, score_3, score_4])
-    .then(res => {
-      console.log('res', res);
-    })
+    database.updateBorda(db, [score_1, id_1]);
+    database.updateBorda(db, [score_2, id_2]);
+    database.updateBorda(db, [score_3, id_3]);
+    database.updateBorda(db, [score_4, id_4]);
+
     res.send('done')
 
   })
