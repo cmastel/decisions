@@ -44,7 +44,7 @@ $(() => {
       <tr>
         <td>${data.id}</td>
         <td>${data.title}</td>
-        <td>${data.created_on}</td>
+        <td>${data.created_on.slice(0, 10)}</td>
         <td>
           <form>
           <button type="submit"
