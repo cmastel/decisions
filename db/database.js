@@ -150,8 +150,10 @@ const getPollsById = function (db, user_id) {
     user_id
   ]
 return db.query(`
-  SELECT *
+  SELECT polls.*, responses.choice
   FROM polls
+  JOIN questions ON polls.id = questions.poll_id
+  JOIN responses ON questions.id = responses.question_id
   WHERE polls.user_id = $1;
 `, values)
 .then(res => res.rows)

@@ -96,6 +96,7 @@ module.exports = (db) => {
 
     database.getPollsById(db, userID)
       .then(polls => {
+        console.log("POLLLLSSSSS++++>>>>>>",polls)
         res.send(polls);
       })
       .catch(e => res.send(e));
