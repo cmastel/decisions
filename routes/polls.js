@@ -67,7 +67,7 @@ module.exports = (db) => {
     newPoll.adminUrl = cuid();
     newPoll.guestUrl = cuid();
     const userID = req.session.userID;
-    helpers.emailNewPoll(db, userID, newPoll.adminUrl, newPoll.guestUrl)
+    helpers.emailNewPoll(db, userID, newPoll.adminUrl, newPoll.guestUrl);
     database.addNewPoll(db, newPoll, userID)
     .then(pollData => {
       database.addNewQuestions(db, newPoll, pollData)

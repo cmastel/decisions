@@ -30,6 +30,19 @@ const getUserById = function (db, userId) {
   .catch(err => console.log(err));
 }
 
+const getUserByQuestionId = function (db, questionId) {
+  return db.query(`
+    SELECT users.email, polls.admin_url
+    FROM users
+    JOIN polls ON users.id = polls.user_id
+    JOIN questions ON polls.id = questions.poll_id
+    WHERE questions.id = $1;
+  `, [questionId]
+  )
+  .then(res => res.rows[0])
+  .catch(err => console.log(err));
+}
+
 const addNewPoll = function (db, newPoll, userID) {
   if (!userID) {
     res.send({ message: "not logged in" });
@@ -145,6 +158,7 @@ module.exports = {
   addUser,
   getUserByEmail,
   getUserById,
+  getUserByQuestionId,
   addNewPoll,
   addNewQuestions,
   addNewResponses,

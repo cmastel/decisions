@@ -9,6 +9,7 @@ const express = require('express');
 const app     = express();
 const router  = express.Router();
 const database = require('../db/database.js');
+const helpers = require('../routes/helpers.js')
 const cookieSession = require('cookie-session');
 const convertNumber = require("./helpers.js");
 
@@ -63,7 +64,7 @@ module.exports = (db) => {
     //   console.log("YES TO  COOKIES")
     //   res.send({message: 'You voted already!'});
     // } else {
-      req.session.voteID = req.body.question_id;
+    req.session.voteID = req.body.question_id;
 
 
     const score_1 = convertNumber.switchStatement(req.body.response_1);
@@ -78,6 +79,9 @@ module.exports = (db) => {
     database.updateBorda(db, [score_2, id_2]);
     database.updateBorda(db, [score_3, id_3]);
     database.updateBorda(db, [score_4, id_4]);
+
+    const questionID = req.body.question_id;
+    helpers.emailNewSubmission(db, questionID);
 
     res.send({message: 'done'});
     // }
