@@ -1,0 +1,69 @@
+@import './mixins';
+.mypolls {
+  margin: 30px auto;
+  &-btn {
+    min-width: 110px;
+    margin: 20px auto;
+    float: right;
+    height: 38px;
+    outline: none;
+    border-radius: 38px 38px 38px 38px;
+    background-color: transparent;
+    border: solid rgba(31, 117, 255, 0.9) 1px;
+    cursor: pointer;
+    background-color: rgba(31, 117, 255, 0.8);
+    color: #fff;
+    &:hover{
+      background-color: rgba(31, 117, 255, 1);
+    }
+  }
+
+  .mypolls-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    &-title {
+
+    }
+    &-row {
+      width: 100%;
+
+      &-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &:first-child {
+          flex-basis: 300px;
+        }
+        &-title {
+          font-size: 24px;
+          flex-basis: 300px;
+          &-static {
+            font-size: 28px;
+          }
+        }
+      }
+      &-delete {
+        margin-right: 16px;
+      }
+    }
+  }
+
+}
+
+.delete-btn {
+  min-width: 80px;
+  height: 32px;
+  border: solid rgba(31, 118, 255, 1) 1px;
+  background-color: white;
+  color: rgba(31, 118, 255, 1);
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(31, 118, 255, 1);
+    color: white;
+  }
+}
