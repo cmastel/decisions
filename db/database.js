@@ -107,7 +107,7 @@ const getGuestPoll = function (db, guest_url) {
     guest_url,
   ]
 return db.query(`
-  SELECT polls.title, questions.question, responses.choice, polls.id, responses.id
+  SELECT polls.title, questions.question, responses.choice, questions.id as question_id, responses.id
   FROM polls
   JOIN questions ON polls.id = questions.poll_id
   JOIN responses ON questions.id = responses.question_id

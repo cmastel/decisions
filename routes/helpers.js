@@ -1,6 +1,6 @@
-const switchStatement = item => {
+const switchStatement = index => {
   let number = 0;
-  switch (item) {
+  switch (index) {
   case '0':
     number = 4;
     break;

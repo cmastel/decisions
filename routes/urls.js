@@ -37,6 +37,7 @@ module.exports = (db) => {
     const guest_url = req.params.guest_url;
     database.getGuestPoll(db, guest_url)
       .then(pollDetails => {
+        console.log(pollDetails)
         const templateVars = {
           title: pollDetails[0].title,
           question: pollDetails[0].question,
@@ -48,17 +49,23 @@ module.exports = (db) => {
           choice3_id: pollDetails[2].id,
           choice4: pollDetails[3].choice,
           choice4_id: pollDetails[3].id,
-          pollID: pollDetails[0].id
+          question_id: pollDetails[0].question_id
         }
-        console.log('templateVars', templateVars)
+        console.log(templateVars);
         res.render('guest', templateVars);
       })
       .catch(e => res.send(e));
     });
 
   router.post("/guest/:guest_url", (req, res) => {
-    console.log('req', req.body)
-     req.session.voteID = req.body.poll_id;
+    console.log('req', req.body);
+    // if (req.session.voteID === req.body.question_id) {
+    //   console.log("YES TO  COOKIES")
+    //   res.send({message: 'You voted already!'});
+    // } else {
+      req.session.voteID = req.body.question_id;
+
+
     const score_1 = convertNumber.switchStatement(req.body.response_1);
     const score_2 = convertNumber.switchStatement(req.body.response_2);
     const score_3 = convertNumber.switchStatement(req.body.response_3);
@@ -72,7 +79,8 @@ module.exports = (db) => {
     database.updateBorda(db, [score_3, id_3]);
     database.updateBorda(db, [score_4, id_4]);
 
-    res.send('done')
+    res.send({message: 'done'});
+    // }
 
   })
   return router;

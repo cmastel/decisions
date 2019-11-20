@@ -14,43 +14,21 @@
 
   <body>
     <header id="page-header" class="page-header"></header>
-    <h2><%= title %></h2>
-    <h3><%= question %></h3>
+    <div class="container">
+    <h2 class="guest-title"><%= title %></h2>
+    <h3 class="guest-question"><%= question %></h3>
     <form id="guest-url-form" class="guest-url-form">
       <ul class="list-choises">
-        <li id="first-choise" class="list-choises-item" data-id1="<%= choice1_id %>"><%= choice1 %></li>
+        <li id="first-choise" class="list-choises-item" data-question_id="<%= question_id %>" data-id1="<%= choice1_id %>"><%= choice1 %></li>
         <li id="second-choise" class="list-choises-item" data-id2="<%= choice2_id %>"><%= choice2 %></li>
         <li id="third-choise" class="list-choises-item" data-id3="<%= choice3_id %>"><%= choice3 %></li>
         <li id="fourth-choise" class="list-choises-item" data-id4="<%= choice4_id %>"><%= choice4 %></li>
       </ul>
-          <!-- <div>
-            <input id="poll_id" type="text" name="poll-id" value=<%= pollID %>>
-          </div>
-          <div class="guest-url-form__field-wrapperr">
-            <label for="response_1"><%= choice1 %></label>
-            <input id="response_1" type="text" name="response_1" placeholder="Enter Rank" data-id1="<%= choice1_id %>">
-          </div>
-          <div class="guest-url-form__field-wrapper">
-            <label for="response_2"><%= choice2 %></label>
-            <input id="response_2" type="text" name="response_2" placeholder="Enter Rank" data-id2="<%= choice2_id %>">
-          </div>
-          <div class="guest-url-form__field-wrapper">
-            <label for="response_3"><%= choice3 %></label>
-            <input id="response_3" type="text" name="response_3" placeholder="Enter Rank" data-id3="<%= choice3_id %>">
-          </div>
-          <div class="guest-url-form__field-wrapper">
-            <label for="response_4"><%= choice4 %></label>
-            <input id="response_4" type="text" name="response_4" placeholder="Enter Rank" data-id4="<%= choice4_id %>">
-          </div> -->
-          <div class="guest-url-form__field-wrapper">
-              <button class="guest-url-form-btn" id ="guest-url-form-button">Submit</button>
-          </div>
+        <div class="guest-url-form__field-wrapper">
+            <button class="guest-url-form-btn" id ="guest-url-form-button">Submit</button>
+        </div>
         </form>
-
-
-
-
-
+      </div>
   </body>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script
@@ -59,4 +37,9 @@
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="/network/network.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <script src="/scripts/views_manager.js"></script>
+  <script src="/scripts/components/header.js"></script>
+  <script src="/scripts/components/mainPage.js"></script>
+
 </html>
