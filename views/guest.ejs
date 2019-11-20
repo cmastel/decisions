@@ -16,28 +16,28 @@
     <header id="page-header" class="page-header"></header>
     <h2><%= title %></h2>
     <h3><%= question %></h3>
-    <form method="POST" action="/api/urls/guest/:guest_url" id="guest-url-form" class="guest-url-form">
+    <form id="guest-url-form" class="guest-url-form">
           <div>
-            <input id="poll_id" type="text" name="poll-id" value=<%= pollID %>
+            <input id="poll_id" type="text" name="poll-id" value=<%= pollID %>>
           </div>
           <div class="guest-url-form__field-wrapperr">
             <label for="response_1"><%= choice1 %></label>
-            <input id="response_1" type="text" name="response_1" placeholder="Enter Rank">
+            <input id="response_1" type="text" name="response_1" placeholder="Enter Rank" data-id1="<%= choice1_id %>">
           </div>
           <div class="guest-url-form__field-wrapper">
             <label for="response_2"><%= choice2 %></label>
-            <input id="response_2" type="text" name="response_2" placeholder="Enter Rank">
+            <input id="response_2" type="text" name="response_2" placeholder="Enter Rank" data-id2="<%= choice2_id %>">
           </div>
           <div class="guest-url-form__field-wrapper">
             <label for="response_3"><%= choice3 %></label>
-            <input id="response_3" type="text" name="response_3" placeholder="Enter Rank">
+            <input id="response_3" type="text" name="response_3" placeholder="Enter Rank" data-id3="<%= choice3_id %>">
           </div>
           <div class="guest-url-form__field-wrapper">
             <label for="response_4"><%= choice4 %></label>
-            <input id="response_4" type="text" name="response_4" placeholder="Enter Rank">
+            <input id="response_4" type="text" name="response_4" placeholder="Enter Rank" data-id4="<%= choice4_id %>">
           </div>
           <div class="guest-url-form__field-wrapper">
-              <button>Submit</button>
+              <button id ="guest-url-form-button">Submit</button>
           </div>
         </form>
 

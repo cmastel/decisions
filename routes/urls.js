@@ -40,27 +40,35 @@ module.exports = (db) => {
           title: pollDetails[0].title,
           question: pollDetails[0].question,
           choice1: pollDetails[0].choice,
-          choice1_id: pollDetails[0][response.id],
+          choice1_id: pollDetails[0].id,
           choice2: pollDetails[1].choice,
+          choice2_id: pollDetails[1].id,
           choice3: pollDetails[2].choice,
+          choice3_id: pollDetails[2].id,
           choice4: pollDetails[3].choice,
+          choice4_id: pollDetails[3].id,
           pollID: pollDetails[0].id
         }
         console.log('templateVars', templateVars)
-        res.send('guest', templateVars);
+        res.render('guest', templateVars);
       })
       .catch(e => res.send(e));
     });
 
   router.post("/guest/:guest_url", (req, res) => {
     console.log('req', req.body)
-    req.session.voteID = req.body.poll_id;
-    const score_1 = req.body.response_1
-    const score_2 = req.body.response_2
-    const score_3 = req.body.response_3
-    const score_4 = req.body.response_4
+     req.session.voteID = req.body.poll_id;
+    const poll_id = req.body.poll_id;
+    const score_1 = req.body.response_1;
+    const score_2 = req.body.response_2;
+    const score_3 = req.body.response_3;
+    const score_4 = req.body.response_4;
+    const id_1 = req.body.id1;
+    const id_2 = req.body.id2;
+    const id_3 = req.body.id3;
+    const id_4 = req.body.id4;
     console.log('currentScores', score_1, score_2, score_3, score_4);
-    database.updateBorda(db, [req.body.poll_id, score_1, score_2, score_3, score_4])
+    database.updateBorda(db, [poll_id, score_1, score_2, score_3, score_4])
     .then(res => {
       console.log('res', res);
     })
