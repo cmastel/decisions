@@ -9,7 +9,6 @@ $(() => {
     $signUpForm.detach();
     $mainPage.detach();
     $newPoll.detach();
-   // $guestURL.detach();
     $myPolls.detach();
 
 
@@ -30,9 +29,6 @@ $(() => {
     case 'logIn':
       $logInForm.appendTo($main);
       break;
-    // case 'guest':
-    //   $guestURL.appendTo($main);
-    //   break;
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);
       $error.appendTo('body');
