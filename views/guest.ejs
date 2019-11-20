@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700&display=swap" rel="stylesheet">
+
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/guest.js"></script>
   </head>
 
   <body>
-    <header id="page-header" class="page-header"></header>
+    <header id="guest-header" class="guest-header">
+      <p id="guest-header-title">
+          Make you choise. Have to sorted given list in priority. Drag the highest priority to the top.
+      </p>
+    </header>
     <div class="container">
     <h2 class="guest-title"><%= title %></h2>
     <h3 class="guest-question"><%= question %></h3>
@@ -38,8 +44,5 @@
   <script type="text/javascript" src="/network/network.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <script src="/scripts/views_manager.js"></script>
-  <script src="/scripts/components/header.js"></script>
-  <script src="/scripts/components/mainPage.js"></script>
 
 </html>
