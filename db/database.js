@@ -107,7 +107,7 @@ const getGuestPoll = function (db, guest_url) {
     guest_url,
   ]
 return db.query(`
-  SELECT polls.title, questions.question, responses.choice
+  SELECT polls.title, questions.question, responses.choice, polls.id, responses.id
   FROM polls
   JOIN questions ON polls.id = questions.poll_id
   JOIN responses ON questions.id = responses.question_id
@@ -130,6 +130,14 @@ return db.query(`
 .catch(err => console.log(err));
 }
 
+const updateBorda = function (db, values) {
+  return db.query(`
+    UPDATE responses
+    SET borda_score
+  `)
+
+}
+
 module.exports = {
   addUser,
   getUserByEmail,
@@ -140,4 +148,5 @@ module.exports = {
   getPollDetailsDB,
   getGuestPoll,
   getPollsById,
+  updateBorda,
 };

@@ -98,6 +98,11 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   })
 
+  router.post("/api/urls/guest/:guest_url", (req, res) => {
+    console.log('other post running')
+    console.log('req', req.params);
+    // req.session.voteID = poll.id;
+  })
 
 
   return router;

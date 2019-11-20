@@ -9,24 +9,32 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/guest.js"></script>
   </head>
 
   <body>
     <header id="page-header" class="page-header"></header>
     <h2><%= title %></h2>
     <h3><%= question %></h3>
-    <form id="guest-url-form" class="guest-url-form">
+    <form method="POST" action="/api/urls/guest/:guest_url" id="guest-url-form" class="guest-url-form">
+          <div>
+            <input id="poll_id" type="text" name="poll-id" value=<%= pollID %>
+          </div>
           <div class="guest-url-form__field-wrapperr">
-            <input type="text" name="response_1" placeholder=<%= choice1 %>>
+            <label for="response_1"><%= choice1 %></label>
+            <input id="response_1" type="text" name="response_1" placeholder="Enter Rank">
           </div>
           <div class="guest-url-form__field-wrapper">
-              <input type="text" name="response_2" placeholder=<%= choice2 %>>
+            <label for="response_2"><%= choice2 %></label>
+            <input id="response_2" type="text" name="response_2" placeholder="Enter Rank">
           </div>
           <div class="guest-url-form__field-wrapper">
-              <input type="text" name="response_3" placeholder=<%= choice3 %>>
+            <label for="response_3"><%= choice3 %></label>
+            <input id="response_3" type="text" name="response_3" placeholder="Enter Rank">
           </div>
           <div class="guest-url-form__field-wrapper">
-              <input type="text" name="response_4" placeholder=<%= choice4 %>>
+            <label for="response_4"><%= choice4 %></label>
+            <input id="response_4" type="text" name="response_4" placeholder="Enter Rank">
           </div>
           <div class="guest-url-form__field-wrapper">
               <button>Submit</button>
@@ -34,19 +42,19 @@
         </form>
 
 
+    <!-- <ul>
+      <p>Move items into preferred order, most desirable on top.</p>
+      <li><span class='list'>Some link #1</span></li>
+      <li><span class='list'>Some link #2</span></li>
+      <li><span class='list'>Some link #3</span></li>
+      <li><span class='list'>Some link #4</span></li>
+    </ul> -->
+
+
 
   </body>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
+  <!-- <script type="text/javascript" src=“https://code.jquery.com/ui/1.12.1/jquery-ui.js”></script> -->
   <script type="text/javascript" src="/network/network.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-
-  <script src="/scripts/views_manager.js"></script>
-  <script src="/scripts/components/header.js"></script>
-  <script src="/scripts/components/mainPage.js"></script>
-  <script src="/scripts/components/signup_form.js"></script>
-  <script src="/scripts/components/login_form.js"></script>
-  <script src="/scripts/components/my_polls.js"></script>
-  <script src="/scripts/components/new_poll.js"></script>
-  <script src="/scripts/components/guest.js"></script>
 </html>
