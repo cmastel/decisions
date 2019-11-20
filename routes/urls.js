@@ -26,9 +26,27 @@ module.exports = (db) => {
       return;
     }
     const admin_url = req.params.admin_url;
-    database.getPollDetailsDB(db, admin_url)
+    database.getAdminPoll(db, admin_url)
       .then(pollDetails => {
-        res.render('index', pollDetails)
+        const templateVars = {
+          title: pollDetails[0].title,
+          question: pollDetails[0].question,
+          choice1: pollDetails[0].choice,
+          choice1_id: pollDetails[0].id,
+          score1: pollDetails[0].score,
+          choice2: pollDetails[1].choice,
+          choice2_id: pollDetails[1].id,
+          score2: pollDetails[1].score,
+          choice3: pollDetails[2].choice,
+          choice3_id: pollDetails[2].id,
+          score3: pollDetails[2].score,
+          choice4: pollDetails[3].choice,
+          choice4_id: pollDetails[3].id,
+          score4: pollDetails[3].score,
+          question_id: pollDetails[0].question_id
+        }
+        console.log(templateVars);
+        res.render('admin', templateVars)
       })
       .catch(e => res.send(e));
   });
@@ -37,7 +55,6 @@ module.exports = (db) => {
     const guest_url = req.params.guest_url;
     database.getGuestPoll(db, guest_url)
       .then(pollDetails => {
-        console.log(pollDetails)
         const templateVars = {
           title: pollDetails[0].title,
           question: pollDetails[0].question,

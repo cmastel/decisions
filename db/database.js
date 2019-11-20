@@ -117,6 +117,21 @@ return db.query(`
 .catch(err => console.log(err));
 }
 
+const getAdminPoll = function (db, admin_url) {
+  const values = [
+    admin_url,
+  ]
+return db.query(`
+  SELECT polls.title, questions.question, responses.choice, questions.id as question_id, responses.id, responses.borda_score as score
+  FROM polls
+  JOIN questions ON polls.id = questions.poll_id
+  JOIN responses ON questions.id = responses.question_id
+  WHERE polls.admin_url = $1;
+`, values)
+.then(res => res.rows)
+.catch(err => console.log(err));
+}
+
 const getPollsById = function (db, user_id) {
   const values = [
     user_id
@@ -152,4 +167,5 @@ module.exports = {
   getGuestPoll,
   getPollsById,
   updateBorda,
+  getAdminPoll
 };
