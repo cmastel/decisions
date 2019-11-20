@@ -69,6 +69,14 @@ function getPollsById() {
     method: "GET",
     url: `/api/polls/user`
   })
+}
 
+function deletePoll(data) {
+  console.log('deletePoll called');
+  return $.ajax({
+    method: "POST",
+    url: `/api/delete`,
+    data
+  })
 
 }

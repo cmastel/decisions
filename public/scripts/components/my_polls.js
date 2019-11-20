@@ -25,7 +25,7 @@ $(() => {
             <td>Created at this time </td>
             <td>
               <form>
-              <button type="submit"
+              <button data-pollID="53" type="submit"
                       class="btn btn-outline-danger">  </button>
               </form>
             </td>
@@ -70,6 +70,17 @@ $(() => {
   $myPolls.on('click', '#create_new_poll', (event) => {
     event.preventDefault();
     views_manager.show('newPoll');
+  });
+
+  $myPolls.on('submit', (event) => {
+    event.preventDefault();
+    // const data = {...()};
+    console.log('delete pressed');
+    console.log('data', data);
+    deletePoll(data)
+    .then(json => {
+      views_manager.show('myPolls');
+    })
   });
 
 

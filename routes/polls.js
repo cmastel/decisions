@@ -107,6 +107,13 @@ module.exports = (db) => {
     // req.session.voteID = poll.id;
   })
 
+  router.post("/delete", (req, res) => {
+    console.log('POST delete running')
+    console.log('req', req.body)
+    // database.deletePollById(db, pollID)
+
+  })
+
 
   return router;
 };
