@@ -9,6 +9,7 @@ const express = require('express');
 const app     = express();
 const router  = express.Router();
 const database = require('../db/database.js')
+const helpers = require('../routes/helpers.js')
 const cookieSession = require('cookie-session');
 const cuid    = require('cuid');
 
@@ -66,6 +67,7 @@ module.exports = (db) => {
     newPoll.adminUrl = cuid();
     newPoll.guestUrl = cuid();
     const userID = req.session.userID;
+    helpers.emailNewPoll(db, userID, newPoll.adminUrl, newPoll.guestUrl)
     database.addNewPoll(db, newPoll, userID)
     .then(pollData => {
       database.addNewQuestions(db, newPoll, pollData)
@@ -81,6 +83,7 @@ module.exports = (db) => {
         })
       })
     })
+
   });
 
   router.get("/polls/user", (req, res) => {
