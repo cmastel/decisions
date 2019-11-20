@@ -36,18 +36,14 @@ $(() => {
     }).done((res) => {
      if (res.message === 'done') {
       $('.container').remove();
-      $('#guest-header').load('/static/thanks.html', () => alert('Load was performed.'));
+      $('#guest-header').load('/static/thanks.html');
      } else {
 
       $('#guest-header-title').fadeOut('slow', () => {
         $('#guest-header-title').load('/static/error.html', () => {
             $('#guest-header-title').fadeIn('slow');
         });
-    });
-
-      // $('#guest-header').load('/static/error.html');
-      // $(".guest-error").toggleClass("bounceAlpha");
-      // $(".guest-error").toggleClass("hide");
+       });
      }
     });
 

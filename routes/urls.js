@@ -59,9 +59,9 @@ module.exports = (db) => {
 
   router.post("/guest/:guest_url", (req, res) => {
     console.log('req', req.body);
-    if (req.session.voteID === req.body.question_id) {
-      res.send({message: 'You voted already!'});
-    } else {
+    // if (req.session.voteID === req.body.question_id) {
+    //   res.send({message: 'You voted already!'});
+    // } else {
       req.session.voteID = req.body.question_id;
 
 
@@ -79,7 +79,7 @@ module.exports = (db) => {
     database.updateBorda(db, [score_4, id_4]);
 
     res.send({message: 'done'});
-    }
+   // }
 
   })
   return router;
