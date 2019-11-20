@@ -76,9 +76,9 @@ $(() => {
     event.preventDefault();
     // const data = {...()};
     console.log('delete pressed');
-    console.log('data', data);
-    deletePoll(data)
-    .then(json => {
+    deletePoll({ 'pollID': 8 })
+    .then(() => {
+      console.log('should be going to new page')
       views_manager.show('myPolls');
     })
   });

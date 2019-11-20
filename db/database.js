@@ -166,7 +166,14 @@ const updateBorda = function (db, values) {
   `, values)
   .then(res => res.rows)
   .catch(err => console.log(err));
+}
 
+const deletePollById = function (db, pollID) {
+  return db.query(`
+    DELETE FROM polls WHERE polls.id = $1;
+  `, [pollID])
+  .then(() => console.log('Poll deleted'))
+  .catch(err => console.log(err));
 }
 
 module.exports = {
@@ -181,5 +188,6 @@ module.exports = {
   getGuestPoll,
   getPollsById,
   updateBorda,
-  getAdminPoll
+  getAdminPoll,
+  deletePollById,
 };

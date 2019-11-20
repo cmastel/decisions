@@ -3,7 +3,7 @@
 DROP TABLE IF EXISTS votes CASCADE;
 CREATE TABLE votes (
   id SERIAL PRIMARY KEY NOT NULL,
-  response_id INTEGER REFERENCES responses(id),
+  response_id INTEGER REFERENCES responses(id) ON DELETE CASCADE,
   cookie VARCHAR(255) NOT NULL,
   score INT NOT NULL
 );
