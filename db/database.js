@@ -122,7 +122,7 @@ const getAdminPoll = function (db, admin_url) {
     admin_url,
   ]
 return db.query(`
-  SELECT polls.title, questions.question, responses.choice, questions.id as question_id, responses.id, responses.borda_score as score
+  SELECT polls.title, questions.question, responses.choice, questions.id as question_id, responses.id, responses.borda_score as score, polls.admin_url, polls.guest_url
   FROM polls
   JOIN questions ON polls.id = questions.poll_id
   JOIN responses ON questions.id = responses.question_id

@@ -43,9 +43,10 @@ module.exports = (db) => {
           choice4: pollDetails[3].choice,
           choice4_id: pollDetails[3].id,
           score4: pollDetails[3].score,
-          question_id: pollDetails[0].question_id
+          question_id: pollDetails[0].question_id,
+          admin_url: pollDetails[0].admin_url,
+          guest_url: pollDetails[0].guest_url
         }
-        console.log(templateVars);
         res.render('admin', templateVars)
       })
       .catch(e => res.send(e));

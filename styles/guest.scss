@@ -1,10 +1,11 @@
 .guest {
   &-header {
-    padding: 30px 80px;
-    height: 150px;
+    padding: 10px 80px;
+    height: 120px;
     text-align: center;
-    font-size: 36px;
+    font-size: 48px;
     color: rgba(0, 0, 0, 0.8);
+
     &-title {
       padding: 0;
       margin: 0;
@@ -27,9 +28,13 @@
   }
   &-title {
     margin: 20px auto;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.8);
   }
   &-question {
     margin: 20px auto;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.8);
   }
   &-url-form {
     border: solid rgba(0, 0, 0, 0.5) 3px;
@@ -89,5 +94,34 @@
     box-shadow: 8px 8px 4px -7px rgba(31, 117, 255, 0.6);
     padding: 12px 18px;
     margin: 8px 0;
+  }
+}
+
+.admin-urls {
+  margin: 20px auto;
+  padding: 10px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &-title {
+    font-size: 32px;
+  }
+  &-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &-text {
+      font-size: 24px;
+      margin: auto 20px;
+      text-align: center;
+    }
+  }
+  &-links {
+    margin: 10px auto;
+    min-width: 480px;
+    padding: 10px;
+    border-bottom: 2px solid rgba(31, 117, 255, 0.9);
   }
 }
