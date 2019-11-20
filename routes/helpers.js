@@ -1,16 +1,16 @@
 const switchStatement = item => {
   let number = 0;
   switch (item) {
-  case '1':
+  case '0':
     number = 4;
     break;
-  case '2':
+  case '1':
     number = 3;
     break;
-  case '3':
+  case '2':
     number = 2;
     break;
-  case '4':
+  case '3':
     number = 1;
   break;
   default:
