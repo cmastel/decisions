@@ -67,3 +67,47 @@
     color: white;
   }
 }
+
+.mypolls-accordeon-data {
+  //display: none;
+}
+
+.mypolls-accordeon {
+
+}
+
+.mypolls-accordeon-row-data {
+	margin: 0;
+	padding: .8rem 0;
+	cursor: pointer;
+	font-weight: normal;
+
+	// Chevron
+	&::before {
+		content: '';
+		display: inline-block;
+		height: 7px;
+		width: 7px;
+		margin-right: 1rem;
+		margin-left: .5rem;
+		vertical-align: middle;
+		border-right: 1px solid;
+		border-bottom: 1px solid;
+		transform: rotate(-45deg);
+		transition: transform .2s ease-out;
+	}
+}
+
+/* Panel */
+.mypolls-accordeon-data {
+	margin: 0;
+	padding-bottom: .8rem;
+	//display: none;
+}
+
+/* Active */
+.mypolls-accordeon.is-active {
+	.mypolls-accordeon-row-data::before {
+		transform: rotate(45deg);
+	}
+}
