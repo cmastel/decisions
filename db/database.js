@@ -48,18 +48,15 @@ const addNewPoll = function (db, newPoll, userID) {
     res.send({ message: "not logged in" });
     return;
   };
-  const created = new Date;
-  const createdDate = created.getFullYear() + '-' + (created.getMonth() + 1) + '-' + created.getDate();
   const values = [
     newPoll.poll_title,
     newPoll.adminUrl,
     newPoll.guestUrl,
     userID,
-    createdDate
   ]
   return db.query(`
-    INSERT INTO polls (title, admin_url, guest_url, user_id, created_on)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO polls (title, admin_url, guest_url, user_id)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
   `, values)
   .then(res => res.rows[0])
