@@ -96,9 +96,26 @@ $(() => {
     const polls = document.getElementById('mypoll-delete')
     const pollID = polls.getAttribute('data-pollID');
     deletePoll({ 'pollID': pollID })
+    .then(() => updatePolls())
     .then(() => {
-      console.log('should be going to new page')
-      views_manager.show('myPolls')
+      getPollsById()
+        .then(function( data ) {
+        let  arr = [];
+          let obj = {};
+          for (let i = 0; i < data.length; i++) {
+            arr.push(data[i].choice)
+          if ((i + 1) % 4 === 0) {
+            obj ={...obj, ...{ [i]: arr}}
+            arr = [];
+          }
+          }
+          for (let i = 0; i < data.length; i = i + 4) {
+            let result = {...data[i], ...obj[(i+3)]}
+            // console.log(result);
+            $myPolls.find('#table-body').prepend(addTableRow(result));
+
+          }
+        });
     })
   });
 
