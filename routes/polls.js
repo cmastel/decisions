@@ -116,6 +116,7 @@ module.exports = (db) => {
   // Delets a given poll entry, and cascades to delete questions and responses
   router.post("/delete", (req, res) => {
     const pollID = req.body.pollID;
+    console.log("ID=======>>>>>>>",pollID )
     database.deletePollById(db, pollID)
     .then(() => {
       res.send('done');

@@ -15,7 +15,6 @@ function getGuestURL(guest_url) {
 }
 
 function getPollDetails(admin_url) {
-  console.log('getPollDetails called');
   return $.ajax({
     method: "GET",
     url: `/api/urls/admin/:${admin_url}`
@@ -23,7 +22,6 @@ function getPollDetails(admin_url) {
 }
 
 function getPollsById() {
-  console.log('getPollsById called');
   return $.ajax({
     method: "GET",
     url: `/api/polls/user`
@@ -34,7 +32,6 @@ function getPollsById() {
 
 
 function signUp(data) {
-  console.log('signUp called')
   return $.ajax({
     method: "POST",
     url: "/api/users",
@@ -43,7 +40,6 @@ function signUp(data) {
 }
 
 function logIn(data) {
-  console.log('login called')
   return $.ajax({
     method: "POST",
     url: "api/users/login",
@@ -59,7 +55,6 @@ function logOut() {
 }
 
 function newPoll(data) {
-  console.log('newPoll called')
   return $.ajax({
     method: "POST",
     url: "/api/new_poll",
@@ -68,7 +63,6 @@ function newPoll(data) {
 }
 
 function deletePoll(data) {
-  console.log('deletePoll called');
   return $.ajax({
     method: "POST",
     url: `/api/delete`,
