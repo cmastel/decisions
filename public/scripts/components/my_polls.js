@@ -35,6 +35,10 @@ $(() => {
         </div>
         <div>${data.created_on.slice(0, 10)}</div>
       <div>
+        <button class="mypolls-btn" id="view-poll" data-pollID="${data.id}">View</button>
+      </div>
+
+      <div>
       <form>
         <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="delete-btn mypolls-btn">
           Delete
@@ -117,6 +121,14 @@ $(() => {
           }
         });
     })
+  });
+
+  $myPolls.on('click', event => {
+    event.preventDefault();
+    console.log('view clicked')
+    const polls = document.getElementById('view-poll')
+    const pollID = polls.getAttribute('data-pollID');
+    console.log('view-pollID', pollID);
   });
 
 
