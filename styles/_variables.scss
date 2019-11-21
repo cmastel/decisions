@@ -1,12 +1,27 @@
-
 // COLORS
-$color-primary: #4056A1;
-$color-primary-dark: #383838;
-$color-primary-light: #38383880;
+$color-primary: rgba(31, 117, 255, 1);
+$color-primary-light: rgba(31, 117, 255, 0.9);
+$color-primary-lightest: rgba(31, 117, 255, 0.3);
 
-$color-secondary-light: #da9a34;
-$color-secondary-dark: #ff7730;
+$color-secondary: rgb(168, 95, 0);
+$color-secondary-light: rgba(255, 145, 0, 0.8);
+$color-secondary-dark: rgba(168, 95, 0, 0.85);
 
-$color-primary-opasity: rgba(64, 87, 161, 0.5);
-$color-white: #fff;
-$color-black: #000;
+$color-tertiary: rgba(30, 73, 143, 0.4);
+$color-tertiary-light: rgb(112, 128, 144);
+
+$color-danger: rgba(255, 0, 0, 0.6);
+$color-danger-light: rgba(255, 0, 0, 0.08);
+$color-white: rgb(255, 255, 255);
+
+$color-black: rgb(0, 0, 0);
+$color-black-light: rgba(0, 0, 0, 0.8);
+$color-black-medium-light: rgba(0, 0, 0, 0.5);
+
+// FONT SIZES
+
+$xsmall: 14px;
+$small: 18px;
+$medium: 24px;
+$large: 28px;
+$xlarge: 36px;

@@ -1,3 +1,5 @@
+@import "./variables";
+
 .thanks {
   &-check-mark {
     position: relative;
@@ -5,7 +7,7 @@
     height: 160px;
     width: 160px;
     border: solid rgba(31, 117, 255, 0.85) 3px;
-    color:rgba(31, 117, 255, 0.85);
+    color: rgba(31, 117, 255, 0.85);
     border-radius: 50%;
     i {
       height: 100%;
@@ -22,9 +24,9 @@
   &-redirect {
     color: white;
     padding: 10px 15px;
-    font-size: 28px;
+    font-size: $large;
     border: solid rgba(31, 117, 255, 0.85) 3px;
-    background-color: rgba(31, 117, 255, 0.9);
+    background-color: $color-primary-light;
     border-radius: 10px;
   }
 }

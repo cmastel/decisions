@@ -1,20 +1,15 @@
 // See: https://sass-lang.com/
-@import './nav.scss';
-@import './base.scss';
-@import './mainPage.scss';
-@import './signup.scss';
-@import './guest.scss';
-@import './thanks.scss';
-@import './mypolls.scss';
-
+@import "./nav.scss";
+@import "./base.scss";
+@import "./mainPage.scss";
+@import "./signup.scss";
+@import "./guest.scss";
+@import "./thanks.scss";
+@import "./mypolls.scss";
 
 body {
   background-color: rgba(238, 238, 238, 0.2);
-  font-family: 'Source Sans Pro', sans-serif;
-
-  h1 {
-    color: #244751;
-  }
+  font-family: "Source Sans Pro", sans-serif;
 
   .container {
     display: flex;

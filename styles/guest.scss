@@ -1,3 +1,5 @@
+@import "./variables";
+
 .guest {
   &-header {
     padding: 0 80px;
@@ -5,9 +7,7 @@
     min-height: 120px;
     text-align: center;
     font-size: 48px;
-    color: rgba(0, 0, 0, 0.8);
-
-    &-title {
+    color: $color-black-light &-title {
       padding: 0;
       margin: 0;
     }
@@ -15,14 +15,14 @@
   &-error {
     width: 380px;
     min-height: 120px;
-    font-size: 24px;
+    font-size: $medium;
     margin: 0 auto;
     padding-top: 30px;
     text-align: center;
-    border: 1px solid rgba(255, 0, 0, 0.6);
+    border: 1px solid $color-danger;
     border-radius: 5px;
-    background-color: hsla(0, 100%, 50%, 0.08);
-    color: black;
+    background-color: $color-danger-light;
+    color: $color-black;
     visibility: visible;
     opacity: 1;
     transition: visibility 0.4s linear, opacity 0.4s linear, height 0.4s linear;
@@ -30,15 +30,15 @@
   &-title {
     margin: 20px auto;
     font-size: 36px;
-    color: rgba(0, 0, 0, 0.8);
+    color: $color-black-light;
   }
   &-question {
     margin: 20px auto;
-    font-size: 36px;
-    color: rgba(0, 0, 0, 0.8);
+    font-size: $xlarge;
+    color: $color-black-light;
   }
   &-url-form {
-    border: solid rgba(0, 0, 0, 0.5) 3px;
+    border: solid $color-black-medium-light 3px;
     border-radius: 12px;
     padding: 18px;
     min-width: 360px;
@@ -65,22 +65,21 @@
       background-color: transparent;
       border: solid rgba(31, 117, 255, 0.85) 1px;
       cursor: pointer;
-      background-color: rgba(31, 117, 255, 0.9);
-      color: #fff;
-      &:hover{
-        background-color: rgba(31, 117, 255, 1);
+      background-color: $color-primary-light;
+      color: $color-white;
+      &:hover {
+        background-color: $color-primary;
       }
     }
   }
 }
 
-
 .list-choises {
   text-align: center;
-	flex: 1 1 auto;
-	margin-bottom: 0;
-	margin: 0 4px;
-	padding: 0 4px;
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  margin: 0 4px;
+  padding: 0 4px;
   min-height: 60px;
   max-height: 360px;
   color: rgba(0, 0, 0, 0.8);
@@ -126,4 +125,3 @@
     border-bottom: 2px solid rgba(31, 117, 255, 0.9);
   }
 }
-
