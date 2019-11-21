@@ -11,9 +11,8 @@ $(() => {
         <h2 class="mypolls-container-title">My Polls</h2>
         <div class="mypolls-container-row">
           <div class="mypolls-container-row-data">
-            <div class="mypolls-container-row-data-title-static">Title</div>
-            <div class="mypolls-container-row-data-title-static">Created</div>
-            <div class="mypolls-container-row-data-title-static">Delete</div>
+            <div class="mypolls-container-row-data-title-static">TITLE</div>
+            <div class="mypolls-container-row-data-title-static">CREATED</div>
           </div>
         </div>
         <div id="table-body" class="mypolls-container-row">
@@ -35,25 +34,25 @@ $(() => {
           ${data.title}
         </div>
         <div class="mypolls-date">${data.created_on.slice(0, 10)}</div>
-      <div>
-        <a href="http://localhost:8080/api/urls/admin/${data['admin_url']}" class="mypolls-btn" id="view-poll" data-pollUrl="${data['admin_url']}">View</a>
+      <div  class="mypolls-container-row-data-btn">
+        <a href="http://localhost:8080/api/urls/admin/${data['admin_url']}" class="mypolls-btn-custom mypolls-btn" id="view-poll" data-pollUrl="${data['admin_url']}"><span>View</span></a>
       </div>
 
-      <div>
+      <div class="mypolls-container-row-data-btn">
       <form>
         <button id="mypoll-delete" data-pollID="${
           data.id
-        }" type="submit" class="delete-btn mypolls-btn">
+        }" type="submit" class="mypolls-btn-custom mypolls-btn">
           Delete
         </button>
       </form>
       </div>
       </div>
       <div class="mypolls-accordeon-data">
-      <div>${data[0]}</div>
-      <div>${data[1]}</div>
-      <div>${data[2]}</div>
-      <div>${data[3]}</div>
+      <div class="mypolls-accordeon-data-item">${data[0]}</div>
+      <div class="mypolls-accordeon-data-item">${data[1]}</div>
+      <div class="mypolls-accordeon-data-item">${data[2]}</div>
+      <div class="mypolls-accordeon-data-item">${data[3]}</div>
       </div>
     </div>
     `;
