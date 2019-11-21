@@ -38,7 +38,7 @@ $(() => {
       <div>${data.created_on}</div>
       <div>
       <form>
-        <button id="mypoll-delete" type="submit" class="delete-btn mypolls-btn">
+        <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="delete-btn mypolls-btn">
           Delete
         </button>
       </form>
@@ -67,7 +67,7 @@ $(() => {
 
     for (let i = 0; i < data.length; i = i + 4) {
       let result = {...data[i], ...obj[(i+3)]}
-      console.log(result);
+      // console.log(result);
       $myPolls.find('#table-body').prepend(addTableRow(result));
 
     }
@@ -84,7 +84,11 @@ $(() => {
     event.preventDefault();
     // const data = {...()};
     console.log('delete pressed');
-    deletePoll({ 'pollID': 8 })
+    const polls = document.getElementById('mypoll-delete')
+    console.log('polls', polls)
+    const pollID = polls.getAttribute('data-pollID');
+    console.log('pollID', pollID);
+    deletePoll({ 'pollID': pollID })
     .then(() => {
       console.log('should be going to new page')
       views_manager.show('myPolls');
