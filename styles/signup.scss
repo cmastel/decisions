@@ -5,7 +5,7 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   &-input {
     margin: 0 16px;
-    font-size: 18px;
+    font-size: 22px;
     color: rgba(0, 0, 0, 0.9);
     width: 100%;
     height: 48px;
@@ -16,12 +16,12 @@
   }
   &-buttons {
     display: flex;
-    margin: 16px auto;
+    margin: 30px auto;
     justify-content: space-around;
     &-btn {
-      min-width: 80px;
+      min-width: 110px;
       margin: 0 16px;
-      height: 32px;
+      height: 38px;
       outline: none;
       border-radius: 38px 38px 38px 38px;
       background-color: transparent;
@@ -60,14 +60,14 @@ $highlight-color: dodgerblue;
   textarea {
     margin-bottom: 0;
 
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 300;
     padding: 30px 1rem 1rem 25px;
   }
 
   label {
     color: $highlight-color;
-    font-size: 18px;
+    font-size: 22px;
     position: absolute;
     pointer-events: none;
     left: 25px;
@@ -78,7 +78,7 @@ $highlight-color: dodgerblue;
 
   textarea ~ label {
     top: 20px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 300;
   }
 
@@ -87,7 +87,7 @@ $highlight-color: dodgerblue;
   input:disabled[value] ~ label,
   &.has-value input ~ label {
     top: 0;
-    font-size: 12px;
+    font-size: 14px;
     color: $highlight-color;
     font-weight: 400;
   }
@@ -95,7 +95,7 @@ $highlight-color: dodgerblue;
   textarea:focus ~ label,
   &.has-value textarea ~ label {
     top: 0;
-    font-size: 12px;
+    font-size: 14px;
     color: $highlight-color;
     font-weight: 400;
   }
@@ -103,7 +103,7 @@ $highlight-color: dodgerblue;
 
 .has-value {
   top: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: $highlight-color;
   font-weight: 400;
 }

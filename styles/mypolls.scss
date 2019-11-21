@@ -2,6 +2,7 @@
 .mypolls {
   margin: 30px auto;
   &-date {
+    font-size: 18px;
     margin-left: 40px;
     width:20%;
   }
@@ -20,12 +21,16 @@
     color: #fff;
     &-custom {
       text-align: center;
-      min-width: 80px;
-      height: 32px;
+      min-width: 90px;
+      height: 36px;
       border: solid rgba(31, 118, 255, 1) 1px;
       background-color: white;
       color: rgba(31, 118, 255, 1);
       cursor: pointer;
+      @include md {
+        min-width: 60px;
+        height: 30px;
+      }
       & > span {
         display: block;
         margin: 5px auto;
@@ -41,13 +46,23 @@
   }
 
   &-accordeon-data {
+    color: rgba(255, 145, 0, 0.8);
     display: none;
+    &-question {
+      margin: 5px 0;
+      padding: 5px 0;
+      width: 48%;
+      text-align: center;
+      color: rgba(168, 95, 0, 0.85);
+      font-size: 24px;
+    }
     &-item {
-      font-size: 18px;
+      font-size: 22px;
       text-align: center;
       margin: 5px 0;
       padding: 5px 0;
       border: 1px solid rgba(31, 117, 255, 0.3);
+      box-shadow: 8px 8px 4px -7px rgba(31, 117, 255, 0.3);
       background-color: white;
       border-radius: 5px;
       width: 48%;
@@ -82,13 +97,13 @@
         width: 15%;
       }
       &-title {
-        font-size: 24px;
+        font-size: 28px;
         width: 50%;
         cursor: pointer;
         &-static {
           width: 50%;
           flex: 1 1 auto;
-          font-size: 28px;
+          font-size: 32px;
         }
       }
     }
@@ -103,7 +118,9 @@
   background-color: white;
   margin: 5px 0;
   padding: 5px 0;
+  color: rgb(168, 95, 0);
   border: 1px solid rgba(30, 73, 143, 0.4);
+  box-shadow: 8px 8px 4px -7px rgba(30, 73, 143, 0.4);
   background-color: white;
   border-radius: 5px;
   text-align: center;

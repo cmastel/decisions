@@ -49,6 +49,7 @@ $(() => {
       </div>
       </div>
       <div class="mypolls-accordeon-data">
+      <div class="mypolls-accordeon-data-question"> ${data.question}</div>
       <div class="mypolls-accordeon-data-item">${data[0]}</div>
       <div class="mypolls-accordeon-data-item">${data[1]}</div>
       <div class="mypolls-accordeon-data-item">${data[2]}</div>
