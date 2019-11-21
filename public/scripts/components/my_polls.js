@@ -33,21 +33,20 @@ $(() => {
         <div id="mypolls-title" class="mypolls-container-row-data-title">
           ${data.title}
         </div>
-        <div>${data.created_on}</div>
-        <div>
-        <form>
-          <button id="mypoll-delete" type="submit" class="delete-btn mypolls-btn">
-            Delete
-          </button>
-        </form>
-        </div>
+        <div>${data.created_on.slice(0, 10)}</div>
+      <div>
+      <form>
+        <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="delete-btn mypolls-btn">
+          Delete
+        </button>
+      </form>
+      </div>
       </div>
       <div class="mypolls-accordeon-data">
       <div>${data[0]}</div>
       <div>${data[1]}</div>
       <div>${data[2]}</div>
       <div>${data[3]}</div>
-      </div>
     </div>
     `
     return nextRow;
@@ -70,7 +69,7 @@ $(() => {
     }
     for (let i = 0; i < data.length; i = i + 4) {
       let result = {...data[i], ...obj[(i+3)]}
-      console.log(result);
+      // console.log(result);
       $myPolls.find('#table-body').prepend(addTableRow(result));
 
     }
@@ -94,32 +93,12 @@ $(() => {
 
   $myPolls.on('submit', (event) => {
     event.preventDefault();
-    // const data = {...()};
-    console.log('delete pressed');
-
-    deletePoll({ 'pollID': 136 })
+    const polls = document.getElementById('mypoll-delete')
+    const pollID = polls.getAttribute('data-pollID');
+    deletePoll({ 'pollID': pollID })
     .then(() => {
-      updatePolls()
-    })
-    .then(() => {
-      getPollsById()
-      .then(function( data ) {
-       let  arr = [];
-        let obj = {};
-        for (let i = 0; i < data.length; i++) {
-          arr.push(data[i].choice)
-         if ((i + 1) % 4 === 0) {
-          obj ={...obj, ...{ [i]: arr}}
-          arr = [];
-         }
-        }
-        for (let i = 0; i < data.length; i = i + 4) {
-          let result = {...data[i], ...obj[(i+3)]}
-          $myPolls.find('#table-body').prepend(addTableRow(result));
-
-        }
-      });
-      $myPolls.find(".mypolls-accordeon").on('click', () => alert('CLICKED'))
+      console.log('should be going to new page')
+      views_manager.show('myPolls')
     })
   });
 
