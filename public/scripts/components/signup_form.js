@@ -34,11 +34,9 @@ $(() => {
 
   $signUpForm.on('submit', function(event) {
     event.preventDefault();
-    console.log('submit pressed');
     const data = $(this).serialize();
     signUp(data)
     .then(json => {
-      console.log(json)
       header.update(json[0]);
       views_manager.show('myPolls');
    })

@@ -1,6 +1,8 @@
+// helper functions for the various Route files
 const database = require('../db/database.js')
 const mail = require('../public/scripts/mail.js')
 
+// Implements the Borda Score based on guest submission
 const switchStatement = index => {
   let number = 0;
   switch (index) {
@@ -22,26 +24,24 @@ const switchStatement = index => {
   return number;
 }
 
+// Gathers data required in order to send a mailgun email when a new pill is created
 const emailNewPoll = function(db, userID, adminURL, guestURL) {
   database.getUserById(db, userID)
   .then(userData => {
     const userEmail = userData.email;
     const adminLink = 'http://localhost:8080/api/urls/admin/' + adminURL;
     const guestLink = 'http://localhost:8080/api/urls/guest/' + guestURL;
-    // mail.sendNewPollEmail(userEmail, [adminLink, guestLink]);
+    mail.sendNewPollEmail(userEmail, [adminLink, guestLink]);
   })
 }
 
+// Gathers data required in order to send a mailgun email when a guest submits their poll response
 const emailNewSubmission = function(db, questionID) {
   database.getUserByQuestionId(db, questionID)
   .then(user => {
-    console.log('userEmail', user.email)
-    console.log('admin_url', user.admin_url)
     const adminLink = 'http://localhost:8080/api/urls/admin/' + user.admin_url;
-    console.log('admin_link:', adminLink)
-    // mail.sendNewSubmission(user.email, adminLink);
+    mail.sendNewSubmission(user.email, adminLink);
   })
-
 }
 
 module.exports = {

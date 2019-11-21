@@ -1,8 +1,12 @@
-var API_KEY = process.env.MG_APIKEY;
-var DOMAIN = process.env.MG_DOMAIN;
-var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+// Access the mailgun API to send Email given certain events
 
+const API_KEY = process.env.MG_APIKEY;
+const DOMAIN = process.env.MG_DOMAIN;
+const mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+
+// Send email to poll administrator when a new poll is created
 const sendNewPollEmail = function (userEmail, links) {
+  console.log('sendNewPoll', userEmail, links, API_KEY, DOMAIN)
   const data = {
     from: 'Decision Maker <me@samples.mailgun.org>',
     to: userEmail,
@@ -14,6 +18,7 @@ const sendNewPollEmail = function (userEmail, links) {
   });
 }
 
+// Send email to poll administrator when a guest submits their response
 const sendNewSubmission = function (userEmail, link) {
   const data = {
     from: 'Decision Maker <me@samples.mailgun.org>',

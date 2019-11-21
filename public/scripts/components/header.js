@@ -2,7 +2,6 @@ $(() => {
   window.header = {};
 
   const $pageHeader = $('#page-header');
-  let currentUser = null;
   function updateHeader(user) {
     currentUser = user;
     $pageHeader.find("#page-header__user-links").remove();
@@ -25,8 +24,6 @@ $(() => {
           </button>
         </div>
       </nav>
-
-
       `
     } else {
       userLinks = `
@@ -62,7 +59,6 @@ $(() => {
       updateHeader(json.user);
     })
 
-
   $("header").on('click', '#login', () => {
     views_manager.show('logIn');
   });
@@ -86,7 +82,6 @@ $(() => {
 });
 
 $("header").on('click', '#myPolls', (e) => {
-  //views_manager.show('myPolls');
   e.preventDefault();
   getMyDetails()
     .then(res => {
@@ -100,6 +95,5 @@ $("header").on('click', '#myPolls', (e) => {
       }
     })
     .catch(e => console.log(e));
-});
-
+  });
 });

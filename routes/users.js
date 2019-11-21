@@ -8,10 +8,13 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const database = require('../db/database.js')
+const database = require('../db/database.js');
 
 
 module.exports = (db) => {
+  // --------------------- GET --------------------- //
+
+  // Displays details of users table in the browser
   router.get("/", (req, res) => {
     const userID = req.session.userID;
     db.query(`SELECT * FROM users;`)
@@ -32,9 +35,9 @@ module.exports = (db) => {
       })
   })
 
+  // Gets user information to update Header (whether they are logged in or not)
   router.get("/me", (req, res) => {
     const userID = req.session.userID;
-    console.log(req.session.userID)
     if (!userID) {
       res.send(null);
       return;
@@ -55,13 +58,11 @@ module.exports = (db) => {
   // sign-up for a new user
   router.post('/', (req, res) => {
     const user = req.body;
-    let exists;
 
     database.getUserByEmail(db, user.email)
       .then(data => {
         if (data.length !== 0) {
-          // redirect to Login page
-          console.log('User exists, not adding to db')
+          res.send();
         } else {
           user.password = bcrypt.hashSync(user.password, 12);
           database.addUser(db, user)
@@ -79,7 +80,6 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   });
 
-  //User login
   const login = function (email, password) {
     return database.getUserByEmail(db, email)
       .then(user => {
@@ -89,7 +89,7 @@ module.exports = (db) => {
         return null;
       });
   }
-
+  // Login in for existing user
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
     login(email, password)
@@ -104,12 +104,11 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   });
 
-
+  // User logout
   router.post('/logout', (req, res) => {
     req.session.userID = null;
     res.send({});
   });
-
 
   return router;
   };

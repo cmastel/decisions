@@ -1,25 +1,37 @@
+// -------------- GET ------------------- //
+
 function getMyDetails() {
   return $.ajax({
     method: "GET",
     url: "/api/users/me",
   });
-};
-
-// function getPollDetails(admin_url) {
-//   console.log('getPollD called');
-//   return $.ajax({
-//     method: "GET",
-//     url: `/api/urls/admin/:${admin_url}`,
-//     data
-//   })
-// }
+}
 
 function getGuestURL(guest_url) {
   return $.ajax({
     method: "GET",
     url: `/api/urls/guest/:${guest_url}`,
   });
-};
+}
+
+function getPollDetails(admin_url) {
+  console.log('getPollDetails called');
+  return $.ajax({
+    method: "GET",
+    url: `/api/urls/admin/:${admin_url}`
+  });
+}
+
+function getPollsById() {
+  console.log('getPollsById called');
+  return $.ajax({
+    method: "GET",
+    url: `/api/polls/user`
+  });
+}
+
+// -------------- POST ------------------- //
+
 
 function signUp(data) {
   console.log('signUp called')
@@ -44,7 +56,7 @@ function logOut() {
     method: "POST",
     url: "api/users/logout",
   });
-};
+}
 
 function newPoll(data) {
   console.log('newPoll called')
@@ -55,28 +67,12 @@ function newPoll(data) {
   });
 }
 
-function getPollDetails(admin_url) {
-  console.log('getPollDetails called');
-  return $.ajax({
-    method: "GET",
-    url: `/api/urls/admin/:${admin_url}`
-  })
-}
-
-function getPollsById() {
-  console.log('getPollsById called');
-  return $.ajax({
-    method: "GET",
-    url: `/api/polls/user`
-  })
-}
-
 function deletePoll(data) {
   console.log('deletePoll called');
   return $.ajax({
     method: "POST",
     url: `/api/delete`,
     data
-  })
+  });
 }
 

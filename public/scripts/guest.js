@@ -1,4 +1,5 @@
 $(() => {
+  // jQuery for the guest.ejs view file
 
   //Drag and drop logic
   var isDragging = false;
@@ -18,6 +19,7 @@ $(() => {
   });
   $(".list-choises").sortable();
 
+  // Sends the responses to the database based on user preferences
   $("#guest-url-form").on('submit', (event) => {
     event.preventDefault();
     let data = {}
@@ -26,8 +28,6 @@ $(() => {
     data = {...data, 'response_3': $('#third-choise').index()}
     data = {...data, 'response_4': $('#fourth-choise').index()}
     data = {...data, ...$('#first-choise')[0].dataset, ...$('#second-choise')[0].dataset, ...$('#third-choise')[0].dataset, ...$('#fourth-choise')[0].dataset};
-    console.log('data', data);
-    console.log($('#first-choise')[0].dataset)
 
     $.ajax({
       method: "POST",
@@ -38,13 +38,12 @@ $(() => {
       $('.container').remove();
       $('#guest-header').load('/static/thanks.html');
      } else {
-
       $('#guest-header-title').fadeOut('slow', () => {
         $('#guest-header-title').load('/static/error.html', () => {
             $('#guest-header-title').fadeIn('slow');
         });
        });
-     }
+     };
     });
 
   })

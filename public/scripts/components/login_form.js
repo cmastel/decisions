@@ -24,7 +24,6 @@ $(() => {
 
   $logInForm.on('submit', function(event) {
     event.preventDefault();
-
     const data = $(this).serialize();
     logIn(data)
       .then(json => {
@@ -39,6 +38,5 @@ $(() => {
   });
 
   $logInForm.find('.cancel-btn').on('click', () => views_manager.show('mainPage'));
-
 
 });

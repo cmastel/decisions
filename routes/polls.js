@@ -18,10 +18,11 @@ app.use(cookieSession({
   keys: ['key1']
 }));
 
+// ------------------- GET ----------------------- //
 module.exports = (db) => {
+  // Displays details of polls table in the browser
   router.get("/polls", (req, res) => {
     let query = `SELECT * FROM polls`;
-    console.log(query);
     db.query(query)
       .then(data => {
         const polls = data.rows;
@@ -34,9 +35,9 @@ module.exports = (db) => {
       });
   });
 
+  // Displays details of questions table in the browser
   router.get("/questions", (req, res) => {
     let query = `SELECT * FROM questions`;
-    console.log(query);
     db.query(query)
       .then(data => {
         const questions = data.rows;
@@ -49,6 +50,7 @@ module.exports = (db) => {
       });
   });
 
+  // Displays details of responses table in the browser
   router.get("/responses", (req, res) => {
     db.query(`SELECT * FROM responses;`)
       .then(data => {
@@ -62,6 +64,24 @@ module.exports = (db) => {
       })
   })
 
+  // Get a summary of a user's polls
+  router.get("/polls/user", (req, res) => {
+    const userID = req.session.userID;
+    if (!userID) {
+      res.send(null);
+      return;
+    }
+
+    database.getPollsById(db, userID)
+      .then(polls => {
+        res.send(polls);
+      })
+      .catch(e => res.send(e));
+  })
+
+  // ------------------- POST ----------------------- //
+
+  // Creates a new poll
   router.post('/new_poll', (req, res) => {
     const newPoll = req.body;
     newPoll.adminUrl = cuid();
@@ -86,28 +106,14 @@ module.exports = (db) => {
 
   });
 
-  router.get("/polls/user", (req, res) => {
-    const userID = req.session.userID;
-    console.log('userID', req.session.userID)
-    if (!userID) {
-      res.send(null);
-      return;
-    }
+  // //
+  // router.post("/api/urls/guest/:guest_url", (req, res) => {
+  //   console.log('other post running')
+  //   console.log('req', req.params);
+  //   // req.session.voteID = poll.id;
+  // })
 
-    database.getPollsById(db, userID)
-      .then(polls => {
-        console.log("POLLLLSSSSS++++>>>>>>",polls)
-        res.send(polls);
-      })
-      .catch(e => res.send(e));
-  })
-
-  router.post("/api/urls/guest/:guest_url", (req, res) => {
-    console.log('other post running')
-    console.log('req', req.params);
-    // req.session.voteID = poll.id;
-  })
-
+  // Delets a given poll entry, and cascades to delete questions and responses
   router.post("/delete", (req, res) => {
     const pollID = req.body.pollID;
     database.deletePollById(db, pollID)
@@ -115,7 +121,6 @@ module.exports = (db) => {
       res.send('done');
     })
   })
-
 
   return router;
 };

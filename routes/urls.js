@@ -19,6 +19,9 @@ app.use(cookieSession({
 }));
 
 module.exports = (db) => {
+  // ------------------ GET -------------------------//
+
+  // Shows the admin_url page for a given poll
   router.get("/admin/:admin_url", (req, res) => {
     const userID = req.session.userID;
     if (!userID) {
@@ -53,6 +56,7 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   });
 
+  // Shows the guest_url page for a given poll
   router.get("/guest/:guest_url", (req, res) => {
     const guest_url = req.params.guest_url;
     database.getGuestPoll(db, guest_url)
@@ -70,14 +74,15 @@ module.exports = (db) => {
           choice4_id: pollDetails[3].id,
           question_id: pollDetails[0].question_id
         }
-        console.log(templateVars);
         res.render('guest', templateVars);
       })
       .catch(e => res.send(e));
     });
 
+  // ------------------ POST -------------------------//
+
+  // Update the Borda Scores based on a guest submission
   router.post("/guest/:guest_url", (req, res) => {
-    console.log('req', req.body);
     if (req.session.voteID === req.body.question_id) {
       res.send({message: 'You voted already!'});
     } else {
