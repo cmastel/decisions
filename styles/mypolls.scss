@@ -2,7 +2,8 @@
 .mypolls {
   margin: 30px auto;
   &-date {
-    flex-grow: 1;
+    margin-left: 40px;
+    width:20%;
   }
   &-btn {
     flex-grow: 1;
@@ -17,66 +18,93 @@
     cursor: pointer;
     background-color: rgba(31, 117, 255, 0.8);
     color: #fff;
+    &-custom {
+      text-align: center;
+      min-width: 80px;
+      height: 32px;
+      border: solid rgba(31, 118, 255, 1) 1px;
+      background-color: white;
+      color: rgba(31, 118, 255, 1);
+      cursor: pointer;
+      & > span {
+        display: block;
+        margin: 5px auto;
+      }
+      &:hover{
+        background-color: rgba(31, 118, 255, 1);
+        color: white;
+      }
+    }
     &:hover{
       background-color: rgba(31, 117, 255, 1);
     }
   }
 
-  .mypolls-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
-    margin: 0 auto;
-    &-title {
-
-    }
-    &-row {
-      width: 100%;
-
-      &-data {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        &:first-child {
-          flex-grow: 2;
-          //flex-basis: 300px;
-        }
-        &-title {
-          font-size: 24px;
-          flex-basis: 300px;
-          &:first-child {
-            flex-grow: 2;
-          }
-          &-static {
-            font-size: 28px;
-          }
-        }
-      }
-      &-delete {
-        margin-right: 16px;
-      }
+  &-accordeon-data {
+    display: none;
+    &-item {
+      font-size: 18px;
+      text-align: center;
+      margin: 5px 0;
+      padding: 5px 0;
+      border: 1px solid rgba(31, 117, 255, 0.3);
+      background-color: white;
+      border-radius: 5px;
+      width: 48%;
     }
   }
-
 }
 
-.delete-btn {
-  min-width: 80px;
-  height: 32px;
-  border: solid rgba(31, 118, 255, 1) 1px;
+.mypolls-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  &-title {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 36px;
+    margin: 20px auto;
+    padding-left: 100px;
+  }
+  &-row {
+    width: 100%;
+    &-data {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      &:first-child {
+        flex-grow: 2;
+      }
+      &-btn {
+        width: 15%;
+      }
+      &-title {
+        font-size: 24px;
+        width: 50%;
+        cursor: pointer;
+        &-static {
+          width: 50%;
+          flex: 1 1 auto;
+          font-size: 28px;
+        }
+      }
+    }
+    &-delete {
+      margin-right: 16px;
+    }
+  }
+}
+
+
+.active {
   background-color: white;
-  color: rgba(31, 118, 255, 1);
-  cursor: pointer;
-  &:hover{
-    background-color: rgba(31, 118, 255, 1);
-    color: white;
-  }
-}
-
-
-.mypolls-accordeon-data {
-  display: none;
+  margin: 5px 0;
+  padding: 5px 0;
+  border: 1px solid rgba(30, 73, 143, 0.4);
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
 }
