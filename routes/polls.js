@@ -109,12 +109,9 @@ module.exports = (db) => {
   })
 
   router.post("/delete", (req, res) => {
-    console.log('POST delete running')
-    console.log('req', req.body)
     const pollID = req.body.pollID;
     database.deletePollById(db, pollID)
     .then(() => {
-      console.log('poll deleted')
       res.send('done');
     })
   })

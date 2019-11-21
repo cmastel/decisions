@@ -2,8 +2,6 @@ $(() => {
   const $myPolls = $('#div-content');
 
   function updatePolls() {
-    console.log('updatePolls is running');
-    // $myPolls.find("#my_polls").remove();
     const pollInfo = `
     <section class="mypolls" id="my_polls">
       <button class="mypolls-btn" id="create_new_poll">CREATE</button>
@@ -35,7 +33,7 @@ $(() => {
         <div>${data[2]}</div>
         <div>${data[3]}</div>
       </div>
-      <div>${data.created_on}</div>
+      <div>${data.created_on.slice(0, 10)}</div>
       <div>
       <form>
         <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="delete-btn mypolls-btn">
@@ -82,16 +80,12 @@ $(() => {
 
   $myPolls.on('submit', (event) => {
     event.preventDefault();
-    // const data = {...()};
-    console.log('delete pressed');
     const polls = document.getElementById('mypoll-delete')
-    console.log('polls', polls)
     const pollID = polls.getAttribute('data-pollID');
-    console.log('pollID', pollID);
     deletePoll({ 'pollID': pollID })
     .then(() => {
       console.log('should be going to new page')
-      views_manager.show('myPolls');
+      views_manager.show('myPolls')
     })
   });
 
