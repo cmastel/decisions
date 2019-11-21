@@ -29,8 +29,8 @@ const emailNewPoll = function(db, userID, adminURL, guestURL) {
   database.getUserById(db, userID)
   .then(userData => {
     const userEmail = userData.email;
-    const adminLink = 'http://localhost:8080/api/urls/admin/' + adminURL;
-    const guestLink = 'http://localhost:8080/api/urls/guest/' + guestURL;
+    const adminLink = `${process.env.DOMAIN}api/urls/admin/` + adminURL;
+    const guestLink = `${process.env.DOMAIN}api/urls/guest/` + guestURL;
     mail.sendNewPollEmail(userEmail, [adminLink, guestLink]);
   })
 }
@@ -39,7 +39,7 @@ const emailNewPoll = function(db, userID, adminURL, guestURL) {
 const emailNewSubmission = function(db, questionID) {
   database.getUserByQuestionId(db, questionID)
   .then(user => {
-    const adminLink = 'http://localhost:8080/api/urls/admin/' + user.admin_url;
+    const adminLink = `${process.env.DOMAIN}api/urls/admin/` + user.admin_url;
     mail.sendNewSubmission(user.email, adminLink);
   })
 }
