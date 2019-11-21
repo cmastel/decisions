@@ -78,8 +78,21 @@ $(() => {
     });
   });
 
-  $("header").on('click', '#myPolls', () => {
-    views_manager.show('myPolls');
+  $("header").on('click', '#myPolls', (e) => {
+    //views_manager.show('myPolls');
+    e.preventDefault();
+    getMyDetails()
+    .then(res => {
+      if (!res) {
+        views_manager.show('logIn');
+      } else {
+        $('.container').remove();
+        $('#guest-header').remove();
+        views_manager.show('pageHeader');
+        views_manager.show('myPolls');
+      }
+    })
+    .catch(e => console.log(e));
   });
 
 });
