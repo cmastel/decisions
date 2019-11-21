@@ -23,6 +23,7 @@ $(() => {
   }
 
   const addTableRow = function(data) {
+    console.log(data);
     const nextRow = `
     <div class = "mypolls-accordeon">
     <div class = "list">
@@ -32,11 +33,17 @@ $(() => {
         </div>
         <div class="mypolls-date">${data.created_on.slice(0, 10)}</div>
       <div  class="mypolls-container-row-data-btn">
-        <a href="http://localhost:8080/api/urls/admin/${data['admin_url']}" class="mypolls-btn-custom mypolls-btn" id="view-poll" data-pollUrl="${data['admin_url']}"><span>View</span></a>
+        <a href="http://localhost:8080/api/urls/admin/${
+          data["admin_url"]
+        }" class="mypolls-btn-custom mypolls-btn" id="view-poll" data-pollUrl="${
+      data["admin_url"]
+    }"><span>View</span></a>
       </div>
       <div class="mypolls-container-row-data-btn">
       <form>
-        <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="mypolls-btn-custom mypolls-btn">
+        <button id="mypoll-delete" data-pollID="${
+          data.id
+        }" type="submit" class="mypolls-btn-custom mypolls-btn">
           Delete
         </button>
       </form>
@@ -110,9 +117,8 @@ $(() => {
 
   // Delete Poll
   $myPolls.on("submit", event => {
+    const pollID = Number(Object.values(event.target[0].dataset));
     event.preventDefault();
-    const polls = document.getElementById("mypoll-delete");
-    const pollID = polls.getAttribute("data-pollID");
     deletePoll({ pollID: pollID })
       .then(() => updatePolls())
       .then(() => {
@@ -162,5 +168,4 @@ $(() => {
         });
       });
   });
-
 });
