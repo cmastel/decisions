@@ -1,9 +1,13 @@
 @import './mixins';
 .mypolls {
   margin: 30px auto;
+  &-date {
+    flex-grow: 1;
+  }
   &-btn {
+    flex-grow: 1;
     min-width: 110px;
-    margin: 20px auto;
+    margin: 20px 16px;
     float: right;
     height: 38px;
     outline: none;
@@ -37,11 +41,15 @@
         justify-content: space-between;
         align-items: center;
         &:first-child {
-          flex-basis: 300px;
+          flex-grow: 2;
+          //flex-basis: 300px;
         }
         &-title {
           font-size: 24px;
           flex-basis: 300px;
+          &:first-child {
+            flex-grow: 2;
+          }
           &-static {
             font-size: 28px;
           }
@@ -68,46 +76,7 @@
   }
 }
 
+
 .mypolls-accordeon-data {
-  //display: none;
-}
-
-.mypolls-accordeon {
-
-}
-
-.mypolls-accordeon-row-data {
-	margin: 0;
-	padding: .8rem 0;
-	cursor: pointer;
-	font-weight: normal;
-
-	// Chevron
-	&::before {
-		content: '';
-		display: inline-block;
-		height: 7px;
-		width: 7px;
-		margin-right: 1rem;
-		margin-left: .5rem;
-		vertical-align: middle;
-		border-right: 1px solid;
-		border-bottom: 1px solid;
-		transform: rotate(-45deg);
-		transition: transform .2s ease-out;
-	}
-}
-
-/* Panel */
-.mypolls-accordeon-data {
-	margin: 0;
-	padding-bottom: .8rem;
-	//display: none;
-}
-
-/* Active */
-.mypolls-accordeon.is-active {
-	.mypolls-accordeon-row-data::before {
-		transform: rotate(45deg);
-	}
+  display: none;
 }

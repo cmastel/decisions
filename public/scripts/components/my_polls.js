@@ -1,10 +1,9 @@
 $(() => {
-  const $myPolls = $('#div-content');
+  const $myPolls = $("#div-content");
 
   function updatePolls() {
-    $('#my_polls').remove();
-    console.log('updatePolls is running');
-    // $myPolls.find("#my_polls").remove();
+    $("#my_polls").remove();
+    console.log("updatePolls is running");
     const pollInfo = `
     <section class="mypolls" id="my_polls">
       <button class="mypolls-btn" id="create_new_poll">CREATE</button>
@@ -22,7 +21,7 @@ $(() => {
         </div>
       </div>
     </section>
-    `
+    `;
     $myPolls.append(pollInfo);
   }
 
@@ -30,18 +29,21 @@ $(() => {
     console.log('data', data)
     const nextRow = `
     <div class = "mypolls-accordeon">
+    <div class = "list">
       <div class="mypolls-container-row-data">
         <div id="mypolls-title" class="mypolls-container-row-data-title">
           ${data.title}
         </div>
-        <div>${data.created_on.slice(0, 10)}</div>
+        <div class="mypolls-date">${data.created_on.slice(0, 10)}</div>
       <div>
         <a href="http://localhost:8080/api/urls/admin/${data['admin_url']}" class="mypolls-btn" id="view-poll" data-pollUrl="${data['admin_url']}">View</a>
       </div>
 
       <div>
       <form>
-        <button id="mypoll-delete" data-pollID="${data.id}" type="submit" class="delete-btn mypolls-btn">
+        <button id="mypoll-delete" data-pollID="${
+          data.id
+        }" type="submit" class="delete-btn mypolls-btn">
           Delete
         </button>
       </form>
@@ -52,80 +54,117 @@ $(() => {
       <div>${data[1]}</div>
       <div>${data[2]}</div>
       <div>${data[3]}</div>
+      </div>
     </div>
-    `
+    `;
     return nextRow;
-  }
+  };
 
   window.$myPolls = $myPolls;
 
   updatePolls();
 
-  getPollsById()
-  .then(function( data ) {
-   let  arr = [];
+  getPollsById().then(function(data) {
+    let arr = [];
     let obj = {};
     for (let i = 0; i < data.length; i++) {
-      arr.push(data[i].choice)
-     if ((i + 1) % 4 === 0) {
-      obj ={...obj, ...{ [i]: arr}}
-      arr = [];
-     }
+      arr.push(data[i].choice);
+      if ((i + 1) % 4 === 0) {
+        obj = { ...obj, ...{ [i]: arr } };
+        arr = [];
+      }
     }
     for (let i = 0; i < data.length; i = i + 4) {
-      let result = {...data[i], ...obj[(i+3)]}
-      // console.log(result);
-      $myPolls.find('#table-body').prepend(addTableRow(result));
-
+      let result = { ...data[i], ...obj[i + 3] };
+      $myPolls.find("#table-body").prepend(addTableRow(result));
     }
+
+    //accordion
+    $myPolls
+      .find(".mypolls-accordeon .mypolls-container-row-data-title")
+      .click(function(j) {
+        const dropDown = $(this)
+          .closest(".list")
+          .find(".mypolls-accordeon-data");
+        $(this)
+          .closest(".mypolls-accordeon")
+          .find(".mypolls-accordeon-data")
+          .not(dropDown)
+          .slideUp();
+        if ($(this).hasClass("active")) {
+          $(this).removeClass("active");
+        } else {
+          $(this)
+            .closest(".mypolls-accordeon")
+            .find(".mypolls-container-row-data-title.active")
+            .removeClass("active");
+          $(this).addClass("active");
+        }
+
+        dropDown.stop(false, true).slideToggle();
+
+        j.preventDefault();
+      });
   });
 
-
-  $myPolls.on('click', '#create_new_poll', (event) => {
+  $myPolls.on("click", "#create_new_poll", event => {
     event.preventDefault();
-    views_manager.show('newPoll');
+    views_manager.show("newPoll");
   });
 
-  $myPolls.find('.mypolls-container-row > .mypolls-accordeon.is-active').children(".mypolls-accordeon-data").slideDown();
-
-  $myPolls.find(".mypolls-container-row > .mypolls-accordeon").click(() => {
-		// Cancel the siblings
-		$(this).siblings(".mypolls-accordeon").removeClass("is-active").children(".mypolls-accordeon-data").slideUp();
-		// Toggle the item
-		$(this).toggleClass("is-active").children(".mypolls-accordeon-data").slideToggle("ease-out");
-  });
-
-
-  $myPolls.on('submit', (event) => {
+  $myPolls.on("submit", event => {
     event.preventDefault();
-    const polls = document.getElementById('mypoll-delete')
-    const pollID = polls.getAttribute('data-pollID');
-    deletePoll({ 'pollID': pollID })
-    .then(() => updatePolls())
-    .then(() => {
-      getPollsById()
-        .then(function( data ) {
-        let  arr = [];
+    const polls = document.getElementById("mypoll-delete");
+    const pollID = polls.getAttribute("data-pollID");
+    deletePoll({ pollID: pollID })
+      .then(() => updatePolls())
+      .then(() => {
+        getPollsById().then(function(data) {
+          let arr = [];
           let obj = {};
           for (let i = 0; i < data.length; i++) {
-            arr.push(data[i].choice)
-          if ((i + 1) % 4 === 0) {
-            obj ={...obj, ...{ [i]: arr}}
-            arr = [];
-          }
+            arr.push(data[i].choice);
+            if ((i + 1) % 4 === 0) {
+              obj = { ...obj, ...{ [i]: arr } };
+              arr = [];
+            }
           }
           for (let i = 0; i < data.length; i = i + 4) {
-            let result = {...data[i], ...obj[(i+3)]}
-            // console.log(result);
-            $myPolls.find('#table-body').prepend(addTableRow(result));
-
+            let result = { ...data[i], ...obj[i + 3] };
+            $myPolls.find("#table-body").prepend(addTableRow(result));
           }
+          //accordion
+          $myPolls
+            .find(".mypolls-accordeon .mypolls-container-row-data-title")
+            .click(function(j) {
+              const dropDown = $(this)
+                .closest(".list")
+                .find(".mypolls-accordeon-data");
+
+              $(this)
+                .closest(".mypolls-accordeon")
+                .find(".mypolls-accordeon-data")
+                .not(dropDown)
+                .slideUp();
+
+              if ($(this).hasClass("active")) {
+                $(this).removeClass("active");
+              } else {
+                $(this)
+                  .closest(".mypolls-accordeon")
+                  .find(".mypolls-container-row-data-title.active")
+                  .removeClass("active");
+                $(this).addClass("active");
+              }
+
+              dropDown.stop(false, true).slideToggle();
+
+              j.preventDefault();
+            });
         });
-    })
+      });
   });
 
 
 
 });
-
-
