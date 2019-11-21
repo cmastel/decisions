@@ -58,7 +58,7 @@ $(() => {
   window.header.update = updateHeader;
 
   getMyDetails()
-    .then(function( json ) {
+    .then(function (json) {
       updateHeader(json.user);
     })
 
@@ -71,17 +71,24 @@ $(() => {
     views_manager.show('signUp');
   });
 
-  $("header").on('click', '#logout', () => {
+  $("header").on('click', '#logout', (e) => {
     logOut().then(() => {
-      views_manager.show('mainPage');
       updateHeader(null);
-    });
+      e.preventDefault();
+      getMyDetails()
+        .then(res => {
+          $('.container').remove();
+          $('#guest-header').remove();
+          views_manager.show('logIn');
+        })
+        .catch(e => console.log(e));
   });
+});
 
-  $("header").on('click', '#myPolls', (e) => {
-    //views_manager.show('myPolls');
-    e.preventDefault();
-    getMyDetails()
+$("header").on('click', '#myPolls', (e) => {
+  //views_manager.show('myPolls');
+  e.preventDefault();
+  getMyDetails()
     .then(res => {
       if (!res) {
         views_manager.show('logIn');
@@ -93,6 +100,6 @@ $(() => {
       }
     })
     .catch(e => console.log(e));
-  });
+});
 
 });

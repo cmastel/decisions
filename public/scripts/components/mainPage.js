@@ -3,7 +3,7 @@ $(() => {
   const $mainPage = $(`
   <div class="main-page">
     <div class="main-page-title">
-     Create a poll which help you with decision
+     Create a poll which helps you make decisions
     </div>
     <button id="get-started" class="main-page-button">Get started</button>
   </div>
