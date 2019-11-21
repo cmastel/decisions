@@ -16,11 +16,6 @@ $(() => {
             <img class="nav-title-logo" src="./static/images/Logo.png" />
           </a>
         </div>
-        <div class="nav-body">
-            <ul class="nav-body-list">
-              <li><a href="#">Home</a></li>
-            </ul>
-        </div>
         <div class="nav-buttons">
           <button id ="register" type="button" class="nav-buttons-style">
             <span class="nav-buttons-style-font">Register</span>
@@ -43,9 +38,9 @@ $(() => {
       </div>
       <div class="nav-body">
           <ul class="nav-body-list">
-             <li><a href="#">Home</a></li>
-             <li>${user.first_name}</li>
-             <li>${user.last_name}</li>
+            <li class="nav-body-list-name">${user.first_name}</li>
+            <li class="nav-body-list-name">${user.last_name}</li>
+            <li class="nav-body-list-pollList" id="myPolls">My Polls</li>
           </ul>
       </div>
       <div class="nav-buttons">
@@ -81,6 +76,10 @@ $(() => {
       views_manager.show('mainPage');
       updateHeader(null);
     });
+  });
+
+  $("header").on('click', '#myPolls', () => {
+    views_manager.show('myPolls');
   });
 
 });
