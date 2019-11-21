@@ -97,13 +97,13 @@ $(() => {
             <div class="admin-urls-row">
               <p class="admin-urls-row-text">Admin's:</p>
               <div class="admin-urls-links">
-                <a href="http://localhost:8080/api/urls/admin/${data.admin_url}">http://localhost:8080/api/urls/admin/${data.admin_url}</a>
+                <a href="${process.env.DOMAIN}api/urls/admin/${data.admin_url}">${process.env.DOMAIN}api/urls/admin/${data.admin_url}</a>
               </div>
             </div>
             <div class="admin-urls-row">
               <p class="admin-urls-row-text">Guest's:</p>
             <div class="admin-urls-links">
-              <a href="http://localhost:8080/api/urls/guest/${data.guest_url}">http://localhost:8080/api/urls/guest/${data.guest_url}</a>
+              <a href="${process.env.DOMAIN}api/urls/guest/${data.guest_url}">${process.env.DOMAIN}api/urls/guest/${data.guest_url}</a>
             </div>
             </div>
             </div>
