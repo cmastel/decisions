@@ -73,15 +73,10 @@ $(() => {
       views_manager.show('');
       userPoll= `
 
-
-      <header id="guest-header" class="guest-header">
-      <p id="guest-header-title">
-          Current results of the poll
-      </p>
-    </header>
     <div class="container">
       <p class="guest-title">${data.title}</p>
       <p class="guest-question">${data.question}</p>
+      <p class="guest-result-title">Current results:</p>
       <form id="guest-url-form" class="guest-url-form">
         <ul class="list-choises">
           <li id="first-choise" class="list-choises-item" data-question_id="<%= question_id %>" data-id1="<%= choice1_id %>">
