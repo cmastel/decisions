@@ -29,6 +29,7 @@ $(() => {
   const addTableRow = function(data) {
     const nextRow = `
     <div class = "mypolls-accordeon">
+    <div class = "list">
       <div class="mypolls-container-row-data">
         <div id="mypolls-title" class="mypolls-container-row-data-title">
           ${data.title}
@@ -47,6 +48,7 @@ $(() => {
       <div>${data[1]}</div>
       <div>${data[2]}</div>
       <div>${data[3]}</div>
+      </div>
     </div>
     `
     return nextRow;
@@ -73,6 +75,16 @@ $(() => {
       $myPolls.find('#table-body').prepend(addTableRow(result));
 
     }
+
+
+    //accordion
+    $myPolls.find('.mypolls-accordeon .mypolls-container-row-data-title').click((j) => {
+      const dropDown = $(this).closest('.list').find('.mypolls-accordeon-data');
+      dropDown.stop(false, true).slideToggle();
+      j.preventDefault();
+    });
+    ///////////
+
   });
 
 
@@ -81,14 +93,7 @@ $(() => {
     views_manager.show('newPoll');
   });
 
-  $myPolls.find('.mypolls-container-row > .mypolls-accordeon.is-active').children(".mypolls-accordeon-data").slideDown();
 
-  $myPolls.find(".mypolls-container-row > .mypolls-accordeon").click(() => {
-		// Cancel the siblings
-		$(this).siblings(".mypolls-accordeon").removeClass("is-active").children(".mypolls-accordeon-data").slideUp();
-		// Toggle the item
-		$(this).toggleClass("is-active").children(".mypolls-accordeon-data").slideToggle("ease-out");
-  });
 
 
   $myPolls.on('submit', (event) => {
@@ -115,6 +120,16 @@ $(() => {
             $myPolls.find('#table-body').prepend(addTableRow(result));
 
           }
+
+
+
+         //accordion
+          $myPolls.find('.mypolls-accordeon .mypolls-container-row-data-title').click((j) => {
+            const dropDown = $(this).closest('.list').find('.mypolls-accordeon-data');
+            dropDown.stop(false, true).slideToggle();
+            j.preventDefault();
+          });
+
         });
     })
   });
