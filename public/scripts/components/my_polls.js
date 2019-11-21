@@ -27,6 +27,7 @@ $(() => {
   }
 
   const addTableRow = function(data) {
+    console.log('data', data)
     const nextRow = `
     <div class = "mypolls-accordeon">
       <div class="mypolls-container-row-data">
@@ -35,7 +36,7 @@ $(() => {
         </div>
         <div>${data.created_on.slice(0, 10)}</div>
       <div>
-        <button class="mypolls-btn" id="view-poll" data-pollID="${data.id}">View</button>
+        <a href="http://localhost:8080/api/urls/admin/${data['admin_url']}" class="mypolls-btn" id="view-poll" data-pollUrl="${data['admin_url']}">View</a>
       </div>
 
       <div>
@@ -123,13 +124,6 @@ $(() => {
     })
   });
 
-  $myPolls.on('click', event => {
-    event.preventDefault();
-    console.log('view clicked')
-    const polls = document.getElementById('view-poll')
-    const pollID = polls.getAttribute('data-pollID');
-    console.log('view-pollID', pollID);
-  });
 
 
 });
