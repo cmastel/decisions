@@ -106,13 +106,6 @@ module.exports = (db) => {
 
   });
 
-  // //
-  // router.post("/api/urls/guest/:guest_url", (req, res) => {
-  //   console.log('other post running')
-  //   console.log('req', req.params);
-  //   // req.session.voteID = poll.id;
-  // })
-
   // Delets a given poll entry, and cascades to delete questions and responses
   router.post("/delete", (req, res) => {
     const pollID = req.body.pollID;

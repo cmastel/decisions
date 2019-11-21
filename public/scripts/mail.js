@@ -6,7 +6,6 @@ const mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
 
 // Send email to poll administrator when a new poll is created
 const sendNewPollEmail = function (userEmail, links) {
-  console.log('sendNewPoll', userEmail, links, API_KEY, DOMAIN)
   const data = {
     from: 'Decision Maker <me@samples.mailgun.org>',
     to: userEmail,
