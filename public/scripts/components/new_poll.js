@@ -1,6 +1,6 @@
 $(() => {
 
-  const DOMAIN = 'http://localhost:8080/';
+  const DOMAIN = 'http://lhldescions.herokuapp.com/';
 
   const $newPoll = $(`
   <form id="new-polls-form" class="signup-form">
