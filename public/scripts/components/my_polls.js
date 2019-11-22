@@ -1,6 +1,6 @@
 $(() => {
   const $myPolls = $("#div-content");
-  const DOMAIN = 'http://lhldescions.herokuapp.com/';
+  const DOMAIN = 'http://localhost:8080/';
 
   function updatePolls() {
     $("#my_polls").remove();
