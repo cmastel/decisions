@@ -1,4 +1,6 @@
 $(() => {
+
+  const DOMAIN = 'https://lhldescions.herokuapp.com/';
   const $logInForm = $(`
   <form id="login-form" class="signup-form">
       <p>Login</p>
@@ -34,7 +36,7 @@ $(() => {
         </div>
         <div class="mypolls-date">${data.created_on.slice(0, 10)}</div>
       <div  class="mypolls-container-row-data-btn">
-        <a href="http://localhost:8080/api/urls/admin/${
+        <a href="${DOMAIN}api/urls/admin/${
           data["admin_url"]
         }" class="mypolls-btn-custom mypolls-btn" id="view-poll" data-pollUrl="${
       data["admin_url"]
