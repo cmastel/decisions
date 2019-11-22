@@ -23,7 +23,6 @@ $(() => {
   }
 
   const addTableRow = function(data) {
-    console.log(data);
     const nextRow = `
     <div class = "mypolls-accordeon">
     <div class = "list">
