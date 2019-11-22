@@ -44,7 +44,7 @@ $topbar-responsive-animation-type: fade-in; // or use slide-down or none
         padding: 0 12px;
         cursor: pointer;
         &:hover {
-          color: rgb(0, 0, 128);
+          color: $color-secondary-light;
         }
       }
 
